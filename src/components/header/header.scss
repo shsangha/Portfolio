@@ -1,0 +1,97 @@
+@import "../../scss/mixins/layers.scss";
+@import "../../scss//variables/padding.scss";
+@import "../../scss/mixins/logo.scss";
+
+.header {
+  position: fixed;
+  width: 100%;
+  @include layer-2;
+}
+
+.header_content {
+  padding: $padding-m;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header_links {
+  display: flex;
+}
+
+.header_btn {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.header_logo {
+  @include logo-sm;
+}
+
+.header_logo_g {
+  fill: blue;
+}
+
+.header_breadcrumbs {
+  display: flex;
+  transition: all 0.7s;
+  transition-timing-function: ease-out;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.header_home_breadcrumb {
+  transition: all 0.7s;
+  font-size: 2rem;
+
+  transition-timing-function: ease-out;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+}
+
+.header_home_link {
+  &:hover + div > .header_breadcrumbs {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+
+  &:hover + div > .header_home_breadcrumb {
+    transform: translateY(-2rem);
+    opacity: 1;
+  }
+}
+
+.header_breadcrumb::before {
+  position: relative;
+  top: -1px;
+  content: "\2014";
+  padding: 0 1rem;
+}
+
+@media only screen and (min-width: 40em) {
+  .header_logo {
+    @include logo-md;
+  }
+
+  .header_content {
+    padding: 4rem;
+  }
+
+  .header_breadcrumbs,
+  .header_home_breadcrumb {
+    font-size: 3rem;
+  }
+
+  .header_home_link {
+    &:hover + div > .header_breadcrumbs {
+      opacity: 0;
+      transform: translateY(-3rem);
+    }
+
+    &:hover + div > .header_home_breadcrumb {
+      transform: translateY(-3rem);
+      opacity: 1;
+    }
+  }
+}
