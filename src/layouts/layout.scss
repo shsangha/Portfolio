@@ -4,12 +4,14 @@
   overflow-x: hidden;
   overflow-y: scroll;
   perspective: 10px;
-  mix-blend-mode: exclusion;
   position: relative;
-
   perspective-origin: 0 0;
 
   &.disable_scroll {
     overflow: hidden;
   }
+}
+
+.container_wrapper {
+  z-index: -1;
 }
