@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from "react"
+import React, { useState, Dispatch, SetStateAction, cloneElement } from "react"
 import PropTypes from "prop-types"
 import {
   TransitionGroup,
@@ -6,6 +6,7 @@ import {
 } from "react-transition-group"
 import Header from "../components/header"
 import { ReachRouterLocation, MenuState } from "../../types/index"
+import Cursor from "../components/cursor"
 
 import "./layout.scss"
 
@@ -15,7 +16,7 @@ const Layout = ({
   children,
   location,
 }: {
-  children: React.ReactChild
+  children: React.ReactElement
   location: ReachRouterLocation
 }) => {
   const [menuStatus, setMenuStatus]: [
@@ -29,30 +30,38 @@ const Layout = ({
   console.log(menuStatus)
 
   return (
-    <div>
-      <Header
-        setMenuStatus={setMenuStatus}
-        menuStatus={menuStatus}
-        location={location}
-      />
-      <TransitionGroup>
-        <ReactTransition
-          key={location.pathname}
-          timeout={{
-            enter: timeout,
-            exit: timeout,
-          }}
-        >
-          <div
-            className={`container ${
-              menuStatus.menuOpen ? "disable_scroll" : ""
-            }`}
-          >
-            {children}
-          </div>
-        </ReactTransition>
-      </TransitionGroup>
-    </div>
+    <Cursor>
+      {({ focusLink, contrastCursor }) => (
+        <div className="container_wrapper">
+          <Header
+            setMenuStatus={setMenuStatus}
+            menuStatus={menuStatus}
+            location={location}
+          />
+          <TransitionGroup>
+            <ReactTransition
+              key={location.pathname}
+              timeout={{
+                enter: timeout,
+                exit: timeout,
+              }}
+            >
+              <div
+                className={`container ${
+                  menuStatus.menuOpen ? "disable_scroll" : ""
+                }`}
+              >
+                {cloneElement(children, {
+                  focusLink,
+                  location,
+                  contrastCursor,
+                })}
+              </div>
+            </ReactTransition>
+          </TransitionGroup>
+        </div>
+      )}
+    </Cursor>
   )
 }
 
