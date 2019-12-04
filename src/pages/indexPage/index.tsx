@@ -28,7 +28,7 @@ export default (props: {
       },
       { opacity: 1, y: 0 },
       0.1,
-      "+=1.2"
+      "+=.5"
     )
   }, [])
 
