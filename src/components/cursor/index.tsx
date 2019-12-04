@@ -66,7 +66,7 @@ export default (props: {
     onMouseEnter: () => {
       if (cursorRef.current) {
         TweenLite.set(cursorRef.current, {
-          opacity: 0.3,
+          opacity: 0.6,
           background: "#41EAD4",
         })
       }
