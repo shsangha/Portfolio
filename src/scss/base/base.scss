@@ -1,5 +1,5 @@
 @import "../mixins/respond.scss";
-
+@import "./typography.scss";
 *,
 *::after,
 *::before {
@@ -11,6 +11,13 @@
 a,
 button {
   cursor: pointer;
+}
+
+a,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: blue;
 }
 
 html {
@@ -43,4 +50,12 @@ html {
 
 body {
   scrollbar-width: none;
+}
+
+a,
+button,
+*,
+*:active,
+*:hover {
+  cursor: none;
 }
