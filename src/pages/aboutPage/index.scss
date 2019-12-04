@@ -1,0 +1,132 @@
+@import "../../scss/mixins/hoverhighlight.scss";
+
+.about_container {
+  margin-top: 10rem;
+  padding: 2rem 10rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+.about_header {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  text-align: center;
+  padding-bottom: 2rem;
+  white-space: nowrap;
+  font-size: 4rem;
+  color: blue;
+}
+
+.about_img_wrapper {
+  justify-self: center;
+  margin: 0 auto;
+  width: 100%;
+  grid-column: 1 / span 2;
+  grid-row: 4;
+  position: relative;
+  align-self: start;
+}
+
+.about_img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  filter: grayscale(1);
+  transition: opacity 1.4s;
+  opacity: 0;
+
+  &_selected {
+    opacity: 1;
+  }
+}
+.break {
+  line-height: 5rem;
+  content: "";
+}
+
+.about_nav {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  justify-self: start;
+  align-self: start;
+}
+
+.about_nav_btn {
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+  @include hoverHighlight;
+  opacity: 0.5;
+
+  transition: all 1s;
+
+  &.about_nav_selected {
+    opacity: 1;
+    color: blue;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.about_desc {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+  align-self: start;
+  font-size: 1.75rem;
+  padding-bottom: 2rem;
+  position: relative;
+  width: 100%;
+}
+
+.about_desc_text {
+  position: absolute;
+  animation: fadeInAboutText 1s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAboutText {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 46.875em) {
+  .about_header {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .about_img_wrapper {
+    width: 70%;
+    grid-row: 2;
+    grid-column: 1;
+  }
+
+  .about_nav {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .about_nav_btn {
+    align-self: center;
+  }
+
+  .about_desc {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 1.75rem;
+  }
+}
