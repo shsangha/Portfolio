@@ -6,6 +6,7 @@
   position: fixed;
   width: 100%;
   @include layer-2;
+  pointer-events: none;
 }
 
 .header_content {
@@ -16,6 +17,7 @@
 
 .header_links {
   display: flex;
+  pointer-events: all;
 }
 
 .header_btn {
@@ -60,6 +62,10 @@
     transform: translateY(-2rem);
     opacity: 1;
   }
+}
+
+.header_menuContainer {
+  pointer-events: all;
 }
 
 .header_breadcrumb::before {
