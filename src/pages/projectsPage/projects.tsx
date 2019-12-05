@@ -70,7 +70,10 @@ export default props => (
           <div className="section_projects_content">
             <div className="section_projects_list">
               <div className="section_projects_project observe">
-                <div className="section_projects_wrapper">
+                <div
+                  {...props.focusLink()}
+                  className="section_projects_wrapper"
+                >
                   <Img
                     fluid={project1Sources}
                     className="section_projects_img slide_img "
@@ -85,7 +88,10 @@ export default props => (
                 </div>
               </div>
               <div className="section_projects_project observe">
-                <div className="section_projects_wrapper">
+                <div
+                  {...props.focusLink()}
+                  className="section_projects_wrapper"
+                >
                   <Img
                     fluid={project2Sources}
                     className="section_projects_img slide_img  "
@@ -96,17 +102,16 @@ export default props => (
                 </div>
               </div>
               <div className="section_projects_project observe">
-                <div className="section_projects_wrapper">
+                <div
+                  {...props.focusLink()}
+                  className="section_projects_wrapper"
+                >
                   {" "}
                   <Img
                     fluid={project3Sources}
                     className="section_projects_img slide_img "
                   />
-                  <Link
-                    {...props.focusLink()}
-                    to=""
-                    className="section_projects_title fadein_text"
-                  >
+                  <Link to="" className="section_projects_title fadein_text">
                     Lorem ipsum dolor,
                   </Link>
                 </div>
