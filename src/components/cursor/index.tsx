@@ -68,6 +68,7 @@ export default (props: {
         TweenLite.set(cursorRef.current, {
           opacity: 0.6,
           background: "#41EAD4",
+          mixBlendMode: "normal",
         })
       }
     },
@@ -76,6 +77,7 @@ export default (props: {
         TweenLite.set(cursorRef.current, {
           opacity: 0.7,
           background: "blue",
+          mixBlendMode: "difference",
         })
       }
     },
