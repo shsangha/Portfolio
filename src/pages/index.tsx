@@ -1,4 +1,4 @@
-import React from "react"
 import IndexPage from "./indexPage"
+import WrapPage from "../components/wrapPage"
 
-export default (props: any) => <IndexPage {...props} />
+export default WrapPage(IndexPage)

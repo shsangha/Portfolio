@@ -1,4 +1,4 @@
-import React from "react"
+import WrapPage from "../components/wrapPage"
 import AboutPage from "./aboutPage"
 
-export default props => <AboutPage {...props} />
+export default WrapPage(AboutPage)

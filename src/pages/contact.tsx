@@ -1,4 +1,4 @@
-import React from "react"
+import WrapPage from "../components/wrapPage"
 import ContactPage from "./contactPage"
 
-export default props => <ContactPage {...props} />
+export default WrapPage(ContactPage)
