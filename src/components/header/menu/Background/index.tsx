@@ -124,13 +124,14 @@ export default () => {
   useEffect(() => {
     const scene = new Scene()
     scene.background = new Color("black")
-    const { width, height } = container.current!.getBoundingClientRect()
+
+    const { innerHeight, innerWidth } = window
 
     const camera = new OrthographicCamera(
-      width / -2,
-      width / 2,
-      height / 2,
-      height / -2,
+      innerWidth / -2,
+      innerWidth / 2,
+      innerHeight / 2,
+      innerHeight / -2,
       1,
       1000
     )
@@ -139,9 +140,9 @@ export default () => {
     const renderer = new WebGLRenderer({ canvas: canvas.current! })
     renderer.setClearColor("black", 0)
 
-    renderer.setSize(width, height)
+    renderer.setSize(innerWidth, innerHeight)
 
-    const plane = new PlaneBufferGeometry(width, height)
+    const plane = new PlaneBufferGeometry(innerWidth, innerHeight)
 
     const shaderMat = new ShaderMaterial({
       fragmentShader,
@@ -161,9 +162,11 @@ export default () => {
     const handleResize = () => {
       camera.updateProjectionMatrix()
 
-      const { width, height } = container.current!.getBoundingClientRect()
+      if (container.current) {
+        const { innerHeight, innerWidth } = window
 
-      renderer.setSize(width, height)
+        renderer.setSize(innerWidth, innerHeight)
+      }
     }
 
     const recursiveAnimation = () => {
@@ -176,6 +179,7 @@ export default () => {
 
     window.addEventListener("resize", handleResize)
 
+    handleResize()
     recursiveAnimation()
 
     return () => {
