@@ -26,6 +26,7 @@
     "moduleResolution": "node",
     "jsx": "react",
     "esModuleInterop": true,
+    "typeRoots": ["node_modules", "types"],
     "allowSyntheticDefaultImports": true
   },
   "include": ["src", "types", "easing/DrawSVGPlugin.js"],
