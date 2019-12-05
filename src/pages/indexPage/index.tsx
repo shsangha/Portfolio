@@ -16,6 +16,8 @@ export default (props: {
   contrastCursor: Function
   focusLink: Function
 }) => {
+  console.log(props)
+
   useEffect(() => {
     const myTimeline = new TimelineLite()
 

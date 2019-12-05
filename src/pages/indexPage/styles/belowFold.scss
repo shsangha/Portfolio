@@ -53,10 +53,10 @@
 .section_about {
   padding: 0 6rem;
   margin-top: 65vh;
+  margin-bottom: 10vh;
 }
 
-.section_about_header,
-.section_projects_title {
+.section_about_header {
   text-align: center;
   color: blue;
 }
@@ -93,14 +93,14 @@
   @include hoverHighlight;
   align-self: center;
 }
-
+/*
 .section_projects_link {
   @include hoverHighlight;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
-
+*/
 .section_skills {
   margin-top: 20vh;
 }
@@ -116,7 +116,6 @@
 }
 
 .section_skills_link {
-  font-size: 2rem;
   @include hoverHighlight;
 }
 
