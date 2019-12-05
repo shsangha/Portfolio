@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction, cloneElement } from "react"
+import React, { useState, Dispatch, SetStateAction, createContext } from "react"
 import PropTypes from "prop-types"
 import {
   TransitionGroup,
@@ -9,6 +9,11 @@ import { ReachRouterLocation, MenuState } from "../../types/index"
 import Cursor from "../components/cursor"
 
 import "./layout.scss"
+
+export const CursorContext = createContext({
+  focusLink: () => {},
+  contrastCursor: () => {},
+})
 
 const timeout = 500
 
@@ -31,36 +36,36 @@ const Layout = ({
 
   return (
     <Cursor>
-      {({ focusLink, contrastCursor }) => (
-        <div className="container_wrapper">
-          <Header
-            setMenuStatus={setMenuStatus}
-            menuStatus={menuStatus}
-            location={location}
-          />
-          <TransitionGroup>
-            <ReactTransition
-              key={location.pathname}
-              timeout={{
-                enter: timeout,
-                exit: timeout,
-              }}
-            >
-              <div
-                className={`container ${
-                  menuStatus.menuOpen ? "disable_scroll" : ""
-                }`}
+      {({ focusLink, contrastCursor }) => {
+        return (
+          <div className="container_wrapper">
+            <Header
+              setMenuStatus={setMenuStatus}
+              menuStatus={menuStatus}
+              location={location}
+            />
+            <TransitionGroup>
+              <ReactTransition
+                key={location.pathname}
+                timeout={{
+                  enter: timeout,
+                  exit: timeout,
+                }}
               >
-                {cloneElement(children, {
-                  focusLink,
-                  location,
-                  contrastCursor,
-                })}
-              </div>
-            </ReactTransition>
-          </TransitionGroup>
-        </div>
-      )}
+                <CursorContext.Provider value={{ focusLink, contrastCursor }}>
+                  <div
+                    className={`container ${
+                      menuStatus.menuOpen ? "disable_scroll" : ""
+                    }`}
+                  >
+                    {children}
+                  </div>
+                </CursorContext.Provider>
+              </ReactTransition>
+            </TransitionGroup>
+          </div>
+        )
+      }}
     </Cursor>
   )
 }
