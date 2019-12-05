@@ -68,9 +68,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-layout`,
+      resolve: "gatsby-plugin-transition-link",
       options: {
-        component: require.resolve(`./src/layouts/index.tsx`),
+        layout: require.resolve(`./src/layouts/index.tsx`),
       },
     },
     "gatsby-plugin-sitemap",
