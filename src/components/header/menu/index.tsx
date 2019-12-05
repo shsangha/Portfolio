@@ -126,31 +126,6 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
             />
           </svg>
         ))}
-        <ImagePreview />
-        <img
-          className="menu_img"
-          src="https://images.unsplash.com/photo-1554921027-b91f0beeb07d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-        />
-        <img
-          className="menu_img "
-          src="https://images.unsplash.com/photo-1515630278258-407f66498911?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-        />
-        <img
-          className="menu_img "
-          src="https://images.unsplash.com/photo-1489436969537-cf0c1dc69cba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-        />
-        <img
-          className="menu_img "
-          src="https://images.unsplash.com/photo-1518016491499-75f85ea4c86d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-        />
-        <img
-          className="menu_img "
-          src="https://images.unsplash.com/photo-1527377667-83c6c76f963f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-        />{" "}
-        <img
-          className="menu_img "
-          src="https://images.unsplash.com/photo-1508473066486-a07f0e2f8ff9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-        />
       </div>
     </div>
   )
