@@ -115,21 +115,6 @@
   right: 0;
 }
 
-.section_projects_content {
-  position: relative;
-
-  &:after {
-    content: "";
-    position: absolute;
-    width: 1px;
-    background-color: rgba(blue, 0.3);
-    height: 95%;
-    top: 0;
-    left: 50%;
-    z-index: -1;
-  }
-}
-
 .section_contact_links {
   flex-direction: row;
   flex-wrap: wrap;
