@@ -5,7 +5,7 @@
 .header {
   position: fixed;
   width: 100%;
-  @include layer-2;
+  z-index: 100;
   pointer-events: none;
 }
 
