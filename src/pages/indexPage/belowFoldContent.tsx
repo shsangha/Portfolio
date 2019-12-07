@@ -85,12 +85,16 @@ const BelowFold = (props: {
                 <div className="marquee_wrapper observe ">
                   <div className="marquee backward fadeMarquee">
                     {marqeeText.map(item => (
-                      <div className="marquee_item">{item}</div>
+                      <div key={item} className="marquee_item">
+                        {item}
+                      </div>
                     ))}
                   </div>
                   <div className="marquee backward fadeMarquee">
                     {marqeeText.map(item => (
-                      <div className="marquee_item">{item}</div>
+                      <div key={item} className="marquee_item">
+                        {item}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -107,12 +111,16 @@ const BelowFold = (props: {
                 <div className="marquee_wrapper observe ">
                   <div className="marquee forward  fadeMarquee">
                     {marqeeText.map(item => (
-                      <div className="marquee_item">{item}</div>
+                      <div key={item} className="marquee_item">
+                        {item}
+                      </div>
                     ))}
                   </div>
                   <div className="marquee forward fadeMarquee">
                     {marqeeText.map(item => (
-                      <div className="marquee_item">{item}</div>
+                      <div key={item} className="marquee_item">
+                        {item}
+                      </div>
                     ))}
                   </div>
                 </div>

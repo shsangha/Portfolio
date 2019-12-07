@@ -5,12 +5,26 @@ import React, {
   Dispatch,
   SetStateAction,
 } from "react"
-import { TimelineLite } from "gsap"
+import gsap from "gsap"
 import Loadable from "react-loadable"
 import { Link } from "gatsby"
 
 import { MenuState } from "../../../../types/index"
 import "./menu.scss"
+
+import about1 from "../../../../static/img/menuAbout1.jpg"
+import about2 from "../../../../static/img/menuAbout2.jpg"
+import about3 from "../../../../static/img/menuAbout3.jpg"
+
+import skills1 from "../../../../static/img/menuSkills1.jpg"
+import skills2 from "../../../../static/img/menuSkills2.jpg"
+import skills3 from "../../../../static/img/menuSkills3.jpg"
+
+import work from "../../../../static/img/project1lg.jpg"
+
+import contact1 from "../../../../static/img/menuContact1.jpg"
+import contact2 from "../../../../static/img/menuContact2.jpg"
+import contact3 from "../../../../static/img/menuContact3.jpg"
 
 interface Props {
   location: Location
@@ -18,37 +32,12 @@ interface Props {
   setMenuStatus: Dispatch<SetStateAction<MenuState>>
 }
 
-let tl: GSAPStatic.Timeline = {} as GSAPStatic.Timeline
+let tl: any
 
 const Background = Loadable({
   loader: () => import("./Background"),
   loading: () => null,
 })
-
-const ImagePreview = () => (
-  <>
-    <img
-      className="menu_img"
-      src="https://images.unsplash.com/photo-1548280647-c6b4af562f4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-    />{" "}
-    <img
-      className="menu_img "
-      src="https://images.unsplash.com/photo-1551009175-15bdf9dcb580?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-    />{" "}
-    <img
-      className="menu_img "
-      src="https://images.unsplash.com/photo-1509472290917-08d8d47c5fca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-    />
-    <img
-      className="menu_img "
-      src="https://images.unsplash.com/photo-1563772770588-e53813b0eac6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-    />{" "}
-    <img
-      className="menu_img "
-      src="https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-    />
-  </>
-)
 
 export default ({ setMenuStatus, menuStatus, location }: Props) => {
   const menuRef = useRef<HTMLDivElement>(null)
@@ -56,24 +45,27 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
   const [hovered, setHovered] = useState("")
 
   useEffect(() => {
-    tl = new TimelineLite({
-      paused: true,
-      onReverseComplete: () => {
-        setMenuStatus({
-          menuOpen: false,
-          menuVisible: false,
-        })
-      },
-    })
+    tl = gsap
+      .timeline({
+        paused: true,
+        onReverseComplete: () => {
+          setMenuStatus({
+            menuOpen: false,
+            menuVisible: false,
+          })
+        },
+      })
       .to(".menu", 1, { opacity: 1 })
       .to(".header_logo_g", 1, { fill: "white" }, "-=1")
-      .to(
-        ".menu_btn",
+      .to(".menu_btn", 0.5, {
+        rotation: "45deg",
+      })
+      .staggerTo(
+        ".menu_link_svg",
         1,
-        {
-          rotation: "45deg",
-        },
-        "-=1"
+        { background: "rgba(0,0,0, 0)", ease: "power1" },
+        0.2,
+        "-=0.4"
       )
   }, [])
 
@@ -85,47 +77,124 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
     }
   }, [menuStatus.menuVisible])
 
+  const animateIn = () => {
+    alert("what")
+    console.log("the bitch is leaving ")
+  }
+
+  const animateOut = node => {
+    console.log("the bitch")
+  }
+
   return (
     <div className="menu">
-      <div className="menu_content">
-        <Background />
-        {["about", "skills", "work", "contact"].map(item => (
-          <svg
-            onMouseEnter={() => {
-              setHovered(item)
-            }}
-            onMouseLeave={() => {
-              setHovered("")
-            }}
-            className={`menu_link ${item} ${
-              hovered && item !== hovered ? "not_hovered" : ""
-            }`}
-            viewBox="0 0 400 100"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <mask id={`mask_${item}`} x="0" y="0" width="100%" height="100%">
-                <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                <text
-                  fontSizeAdjust="0.58"
-                  textAnchor="middle"
-                  alignmentBaseline="middle"
-                  x="50%"
-                  y="50%"
-                >
-                  {item}
-                </text>
-              </mask>
-            </defs>
-            <rect
-              mask={`url(#mask_${item})`}
-              x="0"
-              y="0"
-              width="100%"
-              height="100%"
-            />
-          </svg>
-        ))}
+      <div className="menu_wrapper">
+        <div className="menu_content animation_controller_slideup">
+          <Background />
+          {["about", "skills", "work", "contact"].map(item => (
+            <Link
+              key={item}
+              to={`/${item}`}
+              state={{ animation: "slide-up" }}
+              className={`menu_link ${item} ${
+                hovered && item !== hovered ? "not_hovered" : ""
+              }`}
+            >
+              <svg
+                className="menu_link_svg"
+                onMouseEnter={() => {
+                  setHovered(item)
+                }}
+                onMouseLeave={() => {
+                  setHovered("")
+                }}
+                viewBox="0 0 400 100"
+                preserveAspectRatio="none"
+              >
+                <defs>
+                  <mask
+                    id={`mask_${item}`}
+                    x="0"
+                    y="0"
+                    width="100%"
+                    height="100%"
+                  >
+                    <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                    <text
+                      fontSizeAdjust="0.58"
+                      textAnchor="middle"
+                      alignmentBaseline="middle"
+                      x="50%"
+                      y="50%"
+                    >
+                      {item}
+                    </text>
+                  </mask>
+                </defs>
+                <rect
+                  mask={`url(#mask_${item})`}
+                  x="0"
+                  y="0"
+                  width="100%"
+                  height="100%"
+                />
+              </svg>
+            </Link>
+          ))}
+
+          {hovered === "about" && (
+            <>
+              <div className="menu_img_about1 menu_img">
+                <img className="imginner" src={about1} />
+              </div>
+              <div className="menu_img_about2 menu_img">
+                <img className="imginner" src={about2} />
+              </div>
+              <div className="menu_img_about3 menu_img">
+                <img className="imginner" src={about3} />
+              </div>
+            </>
+          )}
+          {hovered === "skills" && (
+            <>
+              <div className="menu_img_skills1 menu_img">
+                <img className="imginner" src={skills1} />
+              </div>
+              <div className="menu_img_skills2 menu_img">
+                <img className="imginner" src={skills2} />
+              </div>
+              <div className="menu_img_skills3 menu_img">
+                <img className="imginner" src={skills3} />
+              </div>
+            </>
+          )}
+          {hovered === "work" && (
+            <>
+              <div className="menu_img_work1 menu_img">
+                <img className="imginner" src={work} />
+              </div>
+              <div className="menu_img_work2 menu_img">
+                <img className="imginner" src={work} />
+              </div>
+              <div className="menu_img_work3 menu_img">
+                <img className="imginner" src={work} />
+              </div>
+            </>
+          )}
+          {hovered === "contact" && (
+            <>
+              <div className="menu_img_contact1 menu_img">
+                <img className="imginner" src={contact1} />
+              </div>
+              <div className="menu_img_contact2 menu_img">
+                <img className="imginner" src={contact2} />
+              </div>
+              <div className="menu_img_contact3 menu_img">
+                <img className="imginner" src={contact3} />
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   )
