@@ -4,9 +4,9 @@
   overflow-x: hidden;
   overflow-y: scroll;
   perspective: 10px;
-  position: relative;
+  position: absolute;
   perspective-origin: 0 0;
-
+  background: white;
   &.disable_scroll {
     overflow: hidden;
   }
