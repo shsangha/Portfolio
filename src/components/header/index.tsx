@@ -70,7 +70,11 @@ export default ({ location, menuStatus, setMenuStatus }: Props) => {
             <div>
               <div className="header_breadcrumbs">
                 {path.map(item => {
-                  return <div className="header_breadcrumb">{item}</div>
+                  return (
+                    <div key={item} className="header_breadcrumb">
+                      {item}
+                    </div>
+                  )
                 })}
               </div>
               {path.length > 0 && (
@@ -103,16 +107,17 @@ export default ({ location, menuStatus, setMenuStatus }: Props) => {
                 </g>
               </svg>
             </button>
-            {menuStatus.menuOpen && (
+            
+          </div>
+        </div>
+      </header>
+      {menuStatus.menuOpen && (
               <Menu
                 menuStatus={menuStatus}
                 location={location}
                 setMenuStatus={setMenuStatus}
               />
             )}
-          </div>
-        </div>
-      </header>
     </>
   )
 }
