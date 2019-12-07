@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 import React, { useEffect, useRef } from "react"
 import "./style.scss"
-import { TweenLite } from "gsap"
+import gsap from "gsap"
 
 let overLink = false
 let clientX = -30
@@ -26,7 +26,7 @@ export default (props: {
     document.addEventListener("mousemove", handleMove)
 
     const render = () => {
-      TweenLite.set(innerCursor, {
+      gsap.set(innerCursor, {
         x: clientX,
         y: clientY,
       })
@@ -46,17 +46,19 @@ export default (props: {
   const contrastCursor = () => ({
     onMouseEnter: () => {
       if (cursorRef.current) {
-        TweenLite.set(cursorRef.current, {
+        gsap.set(cursorRef.current, {
           background: "red",
           opacity: 1,
+          mixBlendMode: "exclusion",
         })
       }
     },
     onMouseLeave: () => {
       if (cursorRef.current) {
-        TweenLite.set(cursorRef.current, {
+        gsap.set(cursorRef.current, {
           background: "blue",
           opacity: 0.7,
+          mixBlendMode: "normal",
         })
       }
     },
@@ -65,19 +67,17 @@ export default (props: {
   const focusLink = () => ({
     onMouseEnter: () => {
       if (cursorRef.current) {
-        TweenLite.set(cursorRef.current, {
+        gsap.set(cursorRef.current, {
           opacity: 0.6,
           background: "#41EAD4",
-          mixBlendMode: "normal",
         })
       }
     },
     onMouseLeave: () => {
       if (cursorRef.current) {
-        TweenLite.set(cursorRef.current, {
+        gsap.set(cursorRef.current, {
           opacity: 0.7,
           background: "blue",
-          mixBlendMode: "difference",
         })
       }
     },
