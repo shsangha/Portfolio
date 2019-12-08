@@ -55,17 +55,18 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
           })
         },
       })
-      .to(".menu", 1, { opacity: 1 })
-      .to(".header_logo_g", 1, { fill: "white" }, "-=1")
-      .to(".menu_btn", 0.5, {
-        rotation: "45deg",
-      })
+      .to(".menu", 0.8, { y: 0, ease: "power2.in" })
+      .to(".menu", 1, { opacity: 1, ease: "power2" }, "-=0.8")
+      .to(".menu_btn", 0.5, { rotation: "45deg" }, "-=0.5")
       .staggerTo(
         ".menu_link_svg",
-        1,
-        { background: "rgba(0,0,0, 0)", ease: "power1" },
+        0.3,
+        {
+          background: "rgba(0,0,0, 0)",
+          ease: "power1",
+        },
         0.2,
-        "-=0.4"
+        "-=0.2"
       )
   }, [])
 
@@ -76,15 +77,6 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
       tl.reverse()
     }
   }, [menuStatus.menuVisible])
-
-  const animateIn = () => {
-    alert("what")
-    console.log("the bitch is leaving ")
-  }
-
-  const animateOut = node => {
-    console.log("the bitch")
-  }
 
   return (
     <div className="menu">
