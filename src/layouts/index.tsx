@@ -8,6 +8,7 @@ import gsap from "gsap"
 import Header from "../components/header"
 import { ReachRouterLocation, MenuState } from "../../types/index"
 import Cursor from "../components/cursor"
+import Footer from "./footer"
 
 import "./layout.scss"
 
@@ -121,6 +122,7 @@ const Layout = ({
                     } animation_controller_slideup ${location.pathname}`}
                   >
                     {children}
+                    {location.pathname !== "/contact" && <Footer />}
                   </div>
                 </CursorContext.Provider>
               </ReactTransition>
