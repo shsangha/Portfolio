@@ -1,14 +1,23 @@
 @import url("https://fonts.googleapis.com/css?family=Teko:700&display=swap");
 
 .skills_page {
-  height: 100vh;
+  position: relative;
+}
+
+.test {
+  width: 10rem;
+  height: 10rem;
+  position: absolute;
+  float: left;
+  background: red;
 }
 
 .skills_page_info {
   position: fixed;
-  bottom: 0%;
+  bottom: 0;
+  left: 0;
   width: 20vw;
-  display: none;
+  display: block;
 }
 
 .skills_page_wrapper {
@@ -27,6 +36,7 @@
 .skills_page_links {
   display: flex;
   flex-direction: column;
+  background: white;
 }
 .section_page_link {
   font-size: 2rem;
@@ -69,7 +79,7 @@
   transition: all 0.6s;
 
   &:hover {
-    transform: rotateY(-25deg);
+    transform: rotateY(-40deg) skewY(2deg);
   }
 }
 
@@ -90,7 +100,7 @@
   }
 }
 
-@media only screen and (min-width: 75em) {
+@media only screen and (min-width: 45em) {
   .skills_list {
     text-align: right;
   }
