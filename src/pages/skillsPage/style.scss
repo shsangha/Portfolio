@@ -2,14 +2,17 @@
 
 .skills_page {
   position: relative;
-}
 
-.test {
-  width: 10rem;
-  height: 10rem;
-  position: absolute;
-  float: left;
-  background: red;
+  &::after {
+    content: "";
+    width: 15rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: -60rem;
+    background: black;
+    z-index: -1;
+  }
 }
 
 .skills_page_info {
@@ -21,6 +24,7 @@
 }
 
 .skills_page_wrapper {
+  padding-top: 5rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -44,7 +48,8 @@
 }
 
 .skills_wrapper {
-  padding-top: 15rem;
+  padding-top: 5rem;
+  padding-bottom: 10rem;
   display: flex;
   justify-content: center;
 }
