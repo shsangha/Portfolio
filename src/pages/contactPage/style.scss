@@ -46,8 +46,17 @@
   }
 }
 
-.section_contact {
+.contact_page {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.section_contact {
+  background: white;
+}
+
+.section_contact_scroll_wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,6 +68,7 @@
 .section_contact_wrapper {
   width: 100%;
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -85,7 +95,7 @@
 }
 
 .section_contact_content {
-  grid-row: 2;
+  grid-row: 1;
   grid-column: 1 / span 3;
 }
 
@@ -110,7 +120,6 @@
 
 .section_contact_img {
   display: none;
-  position: absolute;
   bottom: 0;
   right: 0;
 }
@@ -124,6 +133,28 @@
   flex-basis: 50%;
 }
 
+.section_contact_footer {
+  background: black;
+  height: 25rem;
+  z-index: -1;
+  margin-top: 10rem;
+  flex-grow: 1;
+}
+
+.section_contact_footer_content {
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 0 5rem;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.section_contact_footer_text {
+  max-width: 60%;
+}
+
 @media only screen and (min-width: 43.75em) {
   .section_contact_content {
     grid-column: 2;
@@ -132,12 +163,39 @@
   .section_contact_logo_wrapper {
     justify-content: center;
   }
+
+  .section_contact_footer_text {
+    max-width: 35%;
+  }
 }
 
 @media only screen and (min-width: 56.25em) {
   .section_contact_img {
-    margin-top: auto;
-    display: block;
-    width: 25%;
+    display: inline-block;
+    width: 95%;
+    grid-row: 1;
+    grid-column: 3;
+    justify-self: end;
+    position: relative;
+    transform: translateY(20rem);
+  }
+
+  .section_contact_footer {
+    margin-top: 0;
+    height: 20rem;
+  }
+
+  .section_contact_scroll_wrapper {
+    padding-right: 0;
+  }
+
+  .section_contact_footer_text {
+    max-width: 30%;
+  }
+}
+
+@media only screen and (max-height: 31.25em) {
+  .section_contact_img {
+    display: none;
   }
 }
