@@ -16,7 +16,8 @@
     transition: transform 0.3s;
   }
 
-  &:hover {
+  &:hover,
+  &:active {
     &:after {
       transform: scaleX(1);
     }
