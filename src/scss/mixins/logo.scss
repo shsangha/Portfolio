@@ -1,0 +1,19 @@
+@mixin logo-xs {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+@mixin logo-sm {
+  width: 3rem;
+  height: 3rem;
+}
+
+@mixin logo-md {
+  width: 4rem;
+  height: 4rem;
+}
+
+@mixin logo-lg {
+  width: 8rem;
+  height: 8rem;
+}

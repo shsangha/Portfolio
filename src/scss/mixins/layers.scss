@@ -1,0 +1,15 @@
+@mixin layer-background {
+  z-index: -1;
+}
+
+@mixin layer-1 {
+  z-index: 0;
+}
+
+@mixin layer-2 {
+  z-index: 1;
+}
+
+@mixin layer-3 {
+  z-index: 2;
+}
