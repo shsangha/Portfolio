@@ -14,35 +14,8 @@ export default props => (
             }
           }
         }
-        project2sm: file(relativePath: { eq: "project1sm.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 1000) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        project3sm: file(relativePath: { eq: "project1sm.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 1000) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+
         project1lg: file(relativePath: { eq: "project1lg.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 1000) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        project2lg: file(relativePath: { eq: "project1sm.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 1000) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        project3lg: file(relativePath: { eq: "project1sm.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1000) {
               ...GatsbyImageSharpFluid
@@ -52,10 +25,11 @@ export default props => (
       }
     `}
     render={data => {
-      const [project1Sources, project2Sources, project3Sources] = [1, 2, 3].map(
+      const [project1Sources, project2Sources, project3Sources] = [1, 1, 1].map(
         idx => {
           return [
             data[`project${idx}sm`].childImageSharp.fluid,
+
             {
               ...data[`project${idx}lg`].childImageSharp.fluid,
               media: "(minWidth: 56.25em)",
