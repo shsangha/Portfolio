@@ -49,8 +49,13 @@ $base-parallax-perspective: 10px;
 .about_page_row {
   display: flex;
   align-items: center;
-  padding: 0 10rem;
+  padding: 0 15rem;
   min-height: 100vh;
+
+  .about_page_row_text {
+    color: black;
+    mix-blend-mode: exclusion;
+  }
 
   &:nth-of-type(even) {
     background: black;
