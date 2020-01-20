@@ -7,6 +7,8 @@
   width: 100%;
   z-index: 100;
   pointer-events: none;
+  background: black;
+  mix-blend-mode: exclusion;
 }
 
 .header_content {
@@ -32,7 +34,7 @@
 }
 
 .header_logo_g {
-  fill: blue;
+  fill: white;
 }
 
 .header_breadcrumbs {
@@ -61,13 +63,17 @@
   }
 
   &:hover + div > .header_home_breadcrumb {
-    transform: translateY(-1rem);
+    transform: translateY(-1.5rem);
     opacity: 1;
   }
 }
 
 .header_menuContainer {
   pointer-events: all;
+}
+
+.header_breadcrumb {
+  color: white;
 }
 
 .header_breadcrumb::before {
@@ -83,23 +89,23 @@
   }
 
   .header_content {
-    padding: 4rem;
+    padding: 2rem 4rem;
   }
 
   .header_breadcrumbs,
   .header_home_breadcrumb {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
   .header_home_link {
     &:hover + div > .header_breadcrumbs {
       opacity: 0;
-      transform: translateY(-0.8rem);
+      transform: translateY(-1rem);
     }
 
     &:hover + div > .header_home_breadcrumb {
       opacity: 1;
-      transform: translateY(-0.8rem);
+      transform: translateY(-2rem);
     }
   }
 }
