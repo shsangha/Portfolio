@@ -88,7 +88,7 @@ export default ({ location, menuStatus, setMenuStatus }: Props) => {
             <button
               onClick={toggleMenu}
               ref={buttonRef}
-              className="header_btn header_logo"
+              className="header_btn  "
             >
               <svg
                 aria-label="open menu"
@@ -107,17 +107,16 @@ export default ({ location, menuStatus, setMenuStatus }: Props) => {
                 </g>
               </svg>
             </button>
-            
           </div>
         </div>
       </header>
       {menuStatus.menuOpen && (
-              <Menu
-                menuStatus={menuStatus}
-                location={location}
-                setMenuStatus={setMenuStatus}
-              />
-            )}
+        <Menu
+          menuStatus={menuStatus}
+          location={location}
+          setMenuStatus={setMenuStatus}
+        />
+      )}
     </>
   )
 }
