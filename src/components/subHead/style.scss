@@ -1,0 +1,58 @@
+@import "../../scss/mixins/logo.scss";
+
+.subHead {
+  display: flex;
+  padding: 0 4rem;
+  padding-bottom: 5rem;
+
+  padding-top: 25vh;
+}
+
+.subHead_logo {
+  display: none;
+  @include logo-lg;
+  margin-right: calc(33% - 13.5rem);
+}
+.subHead_logo_g {
+  fill: blue;
+
+  &.dark {
+    fill: white;
+  }
+}
+
+.subHead_text {
+  font-size: 10rem;
+  font-weight: 500;
+  color: blue;
+  max-width: 60vw;
+  transform: translateY(-3rem);
+  line-height: 1;
+
+  &.dark {
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 28.125em) {
+  .subHead_logo {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 43.75em) {
+  .subHead {
+    padding: 0 15rem;
+    padding-bottom: 5rem;
+    padding-top: 30vh;
+  }
+
+  .subHead_text {
+    font-size: 12rem;
+    transform: translateY(-4rem);
+  }
+
+  .subHead_logo {
+    margin-right: calc(33% - 11.5rem);
+  }
+}
