@@ -79,7 +79,7 @@ export default ({ location, menuStatus, setMenuStatus }: Props) => {
               </div>
               {path.length > 0 && (
                 <div className="header_home_breadcrumb header_breadcrumb">
-                  Home
+                  home
                 </div>
               )}
             </div>
