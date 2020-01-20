@@ -4,7 +4,6 @@ import "./styles/belowFold.scss"
 import Img from "gatsby-image"
 import { FluidImage } from "../../../types/index"
 import IntersectionObserverHOC from "../../components/IntersectionObserverTriggerHOC"
-import Contact from "../contactPage/contact"
 import Projects from "../projectsPage/projects"
 
 const marqeeText = [
@@ -126,7 +125,6 @@ const BelowFold = (props: {
                 </div>
               </div>
             </section>
-            <Contact {...props} />
           </>
         )
       }}
