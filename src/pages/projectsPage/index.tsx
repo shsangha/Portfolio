@@ -1,4 +1,14 @@
+import React from "react"
+
 import IntersectionObserverTriggerHOC from "../../components/IntersectionObserverTriggerHOC"
 import Projects from "./projects"
+import SubHead from "../../components/subHead"
 
-export default IntersectionObserverTriggerHOC(Projects)
+const ProjectsPage = IntersectionObserverTriggerHOC(Projects)
+
+export default props => (
+  <>
+    <SubHead>Work</SubHead>
+    <ProjectsPage {...props} />
+  </>
+)
