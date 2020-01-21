@@ -52,7 +52,6 @@ const BelowFold = (props: {
         return (
           <>
             <section className="section_about">
-              <h2 className="section_about_header">About</h2>
               <div className="section_about_content observe">
                 <div
                   className="section_about_img slide_img "
@@ -62,6 +61,8 @@ const BelowFold = (props: {
                 </div>
 
                 <div className="section_about_desc fadein_text">
+                  <h2 className="section_about_header">About</h2>
+
                   <p className="section_about_text">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Beatae, asperiores quod quasi corporis quam a? Cumque quis
@@ -78,6 +79,8 @@ const BelowFold = (props: {
                 </div>
               </div>
             </section>
+            <h2 className="section_projects_header">Recent Work</h2>
+
             <Projects {...props} />
             <section className="section_skills">
               <div className="wrapper">
