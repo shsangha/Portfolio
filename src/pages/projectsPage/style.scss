@@ -1,5 +1,12 @@
 @import "../../scss/mixins/hoverhighlight.scss";
 
+$base-parallax-perspective: 10px;
+
+@function parallax-scale-factor($z-distance) {
+  @return ($base-parallax-perspective - $z-distance) /
+    $base-parallax-perspective;
+}
+
 .observe {
   .slide_img {
     position: relative;
@@ -46,25 +53,7 @@
 }
 
 .section_projects {
-  padding: 10rem 0;
-}
-
-.section_projects_header {
-  text-align: center;
-  color: blue;
-  position: relative;
-  padding: 4rem 0 12rem 0;
-
-  &:after {
-    content: "";
-    position: absolute;
-    width: 1px;
-    background-color: rgba(blue, 0.3);
-    height: 8rem;
-    bottom: 2rem;
-    left: 50%;
-    z-index: -1;
-  }
+  margin-bottom: 20rem;
 }
 
 .section_projects_content {
@@ -129,9 +118,22 @@
     &:nth-of-type(3) {
       transform: translateY(-50%);
     }
+    &:nth-of-type(4) {
+      transform: translateY(-75%);
+    }
+    &:nth-of-type(5) {
+      transform: translateY(-100%);
+    }
+    &:nth-of-type(6) {
+      transform: translateY(-125%);
+    }
+    &:nth-of-type(7) {
+      transform: translateY(-150%);
+    }
 
     .section_projects_title {
       font-size: 4rem;
+      font-weight: 500;
       text-align: left;
       position: absolute;
 
@@ -159,7 +161,7 @@
       }
     }
 
-    &:nth-child(even) {
+    &:nth-child(odd) {
       flex-direction: row-reverse;
 
       .section_projects_title {
