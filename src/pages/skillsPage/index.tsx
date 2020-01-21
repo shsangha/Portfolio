@@ -1,6 +1,9 @@
 import React, { useEffect } from "react"
 import "./style.scss"
 import { Link } from "gatsby"
+import SubHeader from "../../components/subHead"
+
+import imageSrc from "../../../static/img/skillsPage.jpg"
 
 const marqeeText = [
   "A11Y",
@@ -30,7 +33,10 @@ export default () => {
   return (
     <>
       <div className="skills_page">
-        <div className="test" />
+        <div className="skills_page_hero">
+          <SubHeader mode="dark">Skills &#38; experience </SubHeader>
+        </div>
+        <img className="skills_img" src={imageSrc} />
 
         <div className="skills_wrapper">
           <div className="skills_list_wrapper">
