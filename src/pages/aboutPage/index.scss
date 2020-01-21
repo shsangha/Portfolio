@@ -6,62 +6,61 @@ $base-parallax-perspective: 10px;
 }
 
 .about_page {
-  height: 100vh;
   background: black;
   transform-style: preserve-3d;
 }
 
 .about_content {
+  height: 100vh;
+  position: relative;
   transform-style: preserve-3d;
 }
 
 .about_page_row_1 {
   transform-style: preserve-3d;
-  display: flex;
 }
 .about_page_summary {
-  padding-top: 6rem;
+  padding: 10rem 4rem;
+
   color: black;
-  max-width: 70%;
   margin-left: auto;
   text-align: center;
 }
 
 .about_page_summary_text {
-  max-width: 50%;
+  //  max-width: 50%;
   margin: 0 auto;
-  font-size: 2.5rem;
+  padding-top: 15rem;
+  font-size: 3rem;
+  margin-top: 12rem;
 }
 
 .about_page_mission {
-  padding: 5rem;
-  margin-top: 20rem;
-  max-width: 70%;
+  padding: 4rem 2rem;
+  // max-width: 70%;
   opacity: 0.3;
 }
 
 .about_page_mission_text {
   font-weight: 700;
-  font-size: 10rem;
+  font-size: 5rem;
   margin-bottom: 5rem;
 }
 
 .about_page_row {
   display: flex;
   align-items: center;
-  padding: 0 15rem;
   min-height: 100vh;
 
   .about_page_row_text {
     color: black;
-    mix-blend-mode: exclusion;
   }
 
   &:nth-of-type(even) {
     background: black;
 
     .about_page_row_content {
-      max-width: 40%;
+      //max-width: 40%;
       margin-left: auto;
     }
 
@@ -81,15 +80,62 @@ $base-parallax-perspective: 10px;
 }
 
 .about_page_row_content {
-  max-width: 40%;
+  padding: 2rem;
+  //  max-width: 40%;
   justify-self: flex-end;
 }
 
 .about_img {
   transform-style: preserve-3d;
-  margin-top: 10rem;
-  position: relative;
-  width: 35rem;
-  transform: translateZ(-1px) translateY(1.5vh) translateX(1.5vw)
-    scale(parallax-scale-factor(-1));
+  position: absolute;
+  bottom: -20rem;
+  left: 0;
+  height: 50rem;
+}
+
+@media only screen and (min-width: 43.75em) {
+  .about_img {
+    bottom: -30rem;
+
+    transform: translateZ(-1px) translateY(70px) translateX(1.5vw)
+      scale(parallax-scale-factor(-1));
+  }
+
+  .about_page_summary {
+    max-width: 70%;
+  }
+
+  .about_page_summary_text {
+    max-width: 60%;
+    margin-top: 0;
+    margin-bottom: 4rem;
+    padding-top: 3rem;
+  }
+
+  .about_page_mission_text {
+    font-size: 12rem;
+    max-width: 80%;
+  }
+
+  .about_page_row_content {
+    max-width: 70%;
+    padding: 0 4rem;
+  }
+}
+
+@media only screen and (min-width: 62.5em) {
+  .about_page_row_content {
+    max-width: 50%;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .about_img {
+    display: none;
+  }
+
+  .about_page_summary_text {
+    padding-top: 3rem;
+    margin-top: 0;
+  }
 }
