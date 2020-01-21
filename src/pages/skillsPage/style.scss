@@ -1,18 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Teko:700&display=swap");
 
+$base-parallax-perspective: 10px;
+
+@function parallax-scale-factor($z-distance) {
+  @return ($base-parallax-perspective - $z-distance) /
+    $base-parallax-perspective;
+}
+
 .skills_page {
   position: relative;
-
-  &::after {
-    content: "";
-    width: 15rem;
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: -60rem;
-    background: black;
-    z-index: -1;
-  }
+  transform-style: preserve-3d;
 }
 
 .skills_page_info {
@@ -24,7 +21,6 @@
 }
 
 .skills_page_wrapper {
-  padding-top: 5rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -48,7 +44,7 @@
 }
 
 .skills_wrapper {
-  padding-top: 5rem;
+  margin-top: 10rem;
   padding-bottom: 10rem;
   display: flex;
   justify-content: center;
@@ -105,6 +101,16 @@
   }
 }
 
+.skills_img {
+  height: 40rem;
+  margin-top: -20rem;
+}
+
+.skills_page_hero {
+  height: 100vh;
+  background: black;
+}
+
 @media only screen and (min-width: 45em) {
   .skills_list {
     text-align: right;
@@ -117,5 +123,18 @@
 
   .skills_page_info {
     display: block;
+  }
+
+  .skills_img {
+    margin-top: -30rem;
+
+    transform: translateZ(-1px) translateY(150px) translateX(10px)
+      scale(parallax-scale-factor(-1));
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .skills_img {
+    display: none;
   }
 }
