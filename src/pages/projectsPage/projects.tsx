@@ -40,7 +40,6 @@ export default props => (
 
       return (
         <section className="section_projects">
-          <h2 className="section_projects_header">Recent Work</h2>
           <div className="section_projects_content">
             <div className="section_projects_list">
               <div className="section_projects_project observe">
