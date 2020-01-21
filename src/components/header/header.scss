@@ -43,7 +43,6 @@
   transition-timing-function: ease-out;
   align-items: center;
   font-size: 2rem;
-  transform: translateY(3px);
 }
 
 .header_home_breadcrumb {
@@ -63,7 +62,7 @@
   }
 
   &:hover + div > .header_home_breadcrumb {
-    transform: translateY(-1.5rem);
+    transform: translateY(-2.5rem);
     opacity: 1;
   }
 }
@@ -95,6 +94,7 @@
   .header_breadcrumbs,
   .header_home_breadcrumb {
     font-size: 1.5rem;
+    transform: translateY(0.25rem);
   }
 
   .header_home_link {
