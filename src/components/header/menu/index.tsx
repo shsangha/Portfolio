@@ -93,6 +93,9 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
               }`}
             >
               <svg
+                overflow="visible"
+                width="100%"
+                height="100%"
                 className="menu_link_svg"
                 onMouseEnter={() => {
                   setHovered(item)
@@ -100,7 +103,7 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
                 onMouseLeave={() => {
                   setHovered("")
                 }}
-                viewBox="0 0 400 100"
+                viewBox="0 0 400 120"
                 preserveAspectRatio="none"
               >
                 <defs>
@@ -111,13 +114,23 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
                     width="100%"
                     height="100%"
                   >
-                    <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                    <rect
+                      x="0"
+                      y="0"
+                      width="100%"
+                      height="100%"
+                      fill="white"
+                      shapeRendering="crispEdges"
+                    />
                     <text
-                      fontSizeAdjust="0.58"
+                      fontSizeAdjust="0.2"
                       textAnchor="middle"
                       alignmentBaseline="middle"
+                      dominantBaseline="middle"
+                      lengthAdjust="spacingAndGlyphs"
                       x="50%"
                       y="50%"
+                      shapeRendering="crispEdges"
                     >
                       {item}
                     </text>
@@ -129,6 +142,8 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
                   y="0"
                   width="100%"
                   height="100%"
+                  shapeRendering="crispEdges"
+                  stroke-width="4px"
                 />
               </svg>
             </Link>
