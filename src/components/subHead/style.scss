@@ -3,7 +3,7 @@
 .subHead {
   display: flex;
   padding: 0 4rem;
-  padding-bottom: 5rem;
+  padding-bottom: 6rem;
 
   padding-top: 25vh;
 }
@@ -11,7 +11,7 @@
 .subHead_logo {
   display: none;
   @include logo-lg;
-  margin-right: calc(33% - 13.5rem);
+  margin-right: calc(25% - 13.5rem);
 }
 .subHead_logo_g {
   fill: blue;
@@ -28,6 +28,7 @@
   max-width: 60vw;
   transform: translateY(-3rem);
   line-height: 1;
+  display: block;
 
   &.dark {
     color: white;
@@ -39,20 +40,21 @@
     display: block;
   }
 }
+@media only screen and (min-width: 28.125em) {
+  .subHead {
+    padding-top: 35vh;
+  }
+}
 
-@media only screen and (min-width: 43.75em) {
+@media only screen and (min-width: 53.75em) {
   .subHead {
     padding: 0 15rem;
     padding-bottom: 5rem;
-    padding-top: 30vh;
+    padding-top: 35vh;
   }
 
   .subHead_text {
     font-size: 12rem;
     transform: translateY(-4rem);
-  }
-
-  .subHead_logo {
-    margin-right: calc(33% - 11.5rem);
   }
 }
