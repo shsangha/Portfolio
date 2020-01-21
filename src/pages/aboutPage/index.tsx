@@ -7,12 +7,12 @@ export default () => (
     <div className="about_page">
       <div className="about_content">
         <SubHead mode="dark">About Me</SubHead>
-        <img
-          className="about_img"
-          src="https://images.unsplash.com/photo-1533075377664-f5c0cbc5a91c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-        />
       </div>
     </div>
+    <img
+      className="about_img"
+      src="https://images.unsplash.com/photo-1533075377664-f5c0cbc5a91c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+    />
     <h2 className="about_page_summary">
       <p className="about_page_summary_text">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur
