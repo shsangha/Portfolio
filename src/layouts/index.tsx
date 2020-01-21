@@ -45,6 +45,7 @@ const Layout = ({
               setMenuStatus={setMenuStatus}
               menuStatus={menuStatus}
               location={location}
+              focusLink={focusLink}
             />
 
             <TransitionGroup>
