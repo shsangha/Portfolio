@@ -8,9 +8,13 @@ interface Props {
   location: Location
   menuStatus: MenuState
   setMenuStatus: Dispatch<SetStateAction<MenuState>>
+  focusLink: () => {
+    onMouseEnter: () => void
+    onMouseLeave: () => void
+  }
 }
 
-export default ({ location, menuStatus, setMenuStatus }: Props) => {
+export default ({ location, menuStatus, setMenuStatus, focusLink }: Props) => {
   const path = location.pathname
     .split("/")
     .filter((path, index) => index !== 0 && path !== "")
@@ -46,25 +50,27 @@ export default ({ location, menuStatus, setMenuStatus }: Props) => {
         <div className="header_content">
           <div className="header_links">
             <div className="header_home_link">
-              <svg
-                className="header_logo"
-                data-name="Layer 1"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 60 90"
-              >
-                <g className="header_logo_g" fill="black">
-                  <polygon
-                    points="12.46 0.25 49.55 0.25 38.85 15.84 13.38 15.84 23.71 45.49 13.38 59.29 0.27 17.12 12.46 0.25"
-                    strokeMiterlimit="10"
-                    strokeWidth="0.49"
-                  />
-                  <polygon
-                    points="24.43 45.77 34.22 31.46 50.27 71.59 37.35 90.25 2.1 90.25 13.36 74.14 35.69 74.66 24.43 45.77"
-                    strokeMiterlimit="10"
-                    strokeWidth="0.49"
-                  />
-                </g>
-              </svg>
+              <Link {...focusLink()} to="/">
+                <svg
+                  className="header_logo"
+                  data-name="Layer 1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 60 90"
+                >
+                  <g className="header_logo_g" fill="black">
+                    <polygon
+                      points="12.46 0.25 49.55 0.25 38.85 15.84 13.38 15.84 23.71 45.49 13.38 59.29 0.27 17.12 12.46 0.25"
+                      strokeMiterlimit="10"
+                      strokeWidth="0.49"
+                    />
+                    <polygon
+                      points="24.43 45.77 34.22 31.46 50.27 71.59 37.35 90.25 2.1 90.25 13.36 74.14 35.69 74.66 24.43 45.77"
+                      strokeMiterlimit="10"
+                      strokeWidth="0.49"
+                    />
+                  </g>
+                </svg>
+              </Link>
             </div>
 
             <div>
@@ -89,6 +95,7 @@ export default ({ location, menuStatus, setMenuStatus }: Props) => {
               onClick={toggleMenu}
               ref={buttonRef}
               className="header_btn  "
+              {...focusLink()}
             >
               <svg
                 aria-label="open menu"
