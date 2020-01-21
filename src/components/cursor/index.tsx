@@ -9,7 +9,10 @@ let clientY = -30
 
 export default (props: {
   children: (arg: {
-    focusLink: () => Object
+    focusLink: () => {
+      onMouseEnter: ()=>void,
+      onMouseLeave: ()=>void
+    }
     contrastCursor: () => Object
   }) => React.ReactNode
 }) => {
