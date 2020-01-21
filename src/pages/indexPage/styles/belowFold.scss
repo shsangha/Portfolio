@@ -1,5 +1,12 @@
 @import "../../../scss/mixins/hoverhighlight.scss";
 
+$base-parallax-perspective: 10px;
+
+@function parallax-scale-factor($z-distance) {
+  @return ($base-parallax-perspective - $z-distance) /
+    $base-parallax-perspective;
+}
+
 .observe {
   .slide_img {
     position: relative;
@@ -54,6 +61,7 @@
   padding: 0 6rem;
   margin-top: 65vh;
   margin-bottom: 10vh;
+  background: white;
 }
 
 .section_about_header {
@@ -201,12 +209,32 @@
 
   .section_about_img {
     order: 0;
+    transform: translateZ(-1px) translateY(20px) translateX(10px)
+      scale(parallax-scale-factor(-1));
   }
 
   .section_about_text,
   .section_about_header,
   .section_about_link {
     text-align: left;
+  }
+}
+
+.section_projects_header {
+  text-align: center;
+  color: blue;
+  position: relative;
+  padding: 4rem 0 12rem 0;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    background-color: rgba(blue, 0.3);
+    height: 8rem;
+    bottom: 2rem;
+    left: 50%;
+    z-index: -1;
   }
 }
 
