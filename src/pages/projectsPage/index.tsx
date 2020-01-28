@@ -8,7 +8,7 @@ const ProjectsPage = IntersectionObserverTriggerHOC(Projects)
 
 export default props => (
   <>
-    <SubHead>Work</SubHead>
+    <SubHead>Recent work</SubHead>
     <ProjectsPage {...props} />
   </>
 )
