@@ -123,7 +123,7 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
                       shapeRendering="crispEdges"
                     />
                     <text
-                      fontSizeAdjust="0.2"
+                      fontSizeAdjust="0.4"
                       textAnchor="middle"
                       alignmentBaseline="middle"
                       dominantBaseline="middle"
@@ -143,7 +143,7 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
                   width="100%"
                   height="100%"
                   shapeRendering="crispEdges"
-                  stroke-width="4px"
+                  stroke-width="10px"
                 />
               </svg>
             </Link>
