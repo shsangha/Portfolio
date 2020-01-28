@@ -1,5 +1,12 @@
 @import "../../scss/mixins/hoverhighlight.scss";
 
+$base-parallax-perspective: 10px;
+
+@function parallax-scale-factor($z-distance) {
+  @return ($base-parallax-perspective - $z-distance) /
+    $base-parallax-perspective;
+}
+
 .observe {
   .slide_img {
     position: relative;
@@ -155,7 +162,7 @@
   max-width: 60%;
 }
 
-@media only screen and (min-width: 43.75em) {
+@media only screen and (min-width: 53.125em) {
   .section_contact_content {
     grid-column: 2;
   }
@@ -177,7 +184,8 @@
     grid-column: 3;
     justify-self: end;
     position: relative;
-    transform: translateY(20rem);
+    transform: translateZ(-1px) translateY(150px) translateX(220px)
+      scale(parallax-scale-factor(-1));
   }
 
   .section_contact_footer {
