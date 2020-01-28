@@ -1,0 +1,236 @@
+.work_template {
+  padding-top: 17.5rem;
+  background: black;
+  &_hero_image {
+    width: 100%;
+  }
+
+  &_hero_title {
+    position: relative;
+    top: -6rem;
+    font-size: 10rem;
+    line-height: 1;
+    color: white;
+  }
+}
+
+.work_template_summary_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 70rem;
+  padding: 0 4rem;
+}
+
+.work_template_skills_wrapper {
+  max-width: 40rem;
+  border-left: 1px solid white;
+  padding-left: 1rem;
+  align-self: flex-start;
+}
+
+.work_template_summary {
+  max-width: 50rem;
+  padding-right: 6rem;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.work_template_skills_header {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.work_template_skills_list_item {
+  list-style: none;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.work_template_main_image_wrapper,
+.work_template_footer_image_wrapper,
+.work_template_repeating_main_image_wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.work_template_main_image,
+.work_template_footer_image,
+.work_template_repeating_main_image {
+  display: block;
+  margin: 0 auto;
+  width: 100rem;
+  padding: 10rem 0;
+}
+
+.work_template_repeating_mobile_image_wrapper {
+  width: 36rem;
+  max-width: 100%;
+  // background: red;
+  margin: 5rem 0;
+}
+
+.work_template_repeating_images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.work_template_repeating_mobile_image {
+  width: inherit;
+  min-height: 64rem;
+  object-fit: cover;
+}
+
+.work_template_repeating_entry {
+  padding: 10rem 2rem;
+
+  &:nth-child(odd) {
+    background: white;
+
+    .work_template_repeating_entry_header {
+      color: black;
+    }
+  }
+
+  &:not(:last-child) {
+    padding-bottom: 20rem;
+  }
+
+  &_header {
+    font-size: 5rem;
+    text-align: center;
+    color: white;
+  }
+}
+
+.work_template_next_link {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  margin-top: 5rem;
+  background: white;
+
+  .work_template_next_link_text {
+    font-size: 2rem;
+    color: black;
+  }
+
+  .work_template_next_link_project_title {
+    font-size: 12rem;
+    color: black;
+  }
+
+  &.even {
+    background: black;
+
+    .work_template_next_link,
+    .work_template_next_link_text,
+    .work_template_next_link_project_title {
+      color: white;
+    }
+  }
+}
+
+@media only screen and (min-width: 37.5em) {
+  .work_template {
+    padding-top: 20rem;
+    position: relative;
+    &_hero_image {
+      width: 60%;
+    }
+
+    &_hero_title {
+      max-width: 45vw;
+      position: relative;
+      top: -30rem;
+      left: 50%;
+      font-size: 12rem;
+      line-height: 1;
+      color: white;
+      margin-bottom: 10rem;
+    }
+  }
+
+  .work_template_repeating_entry {
+    &:not(:last-child) {
+      padding-bottom: 20rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 46.75em) {
+  .work_template_main_image,
+  .work_template_footer_image,
+  .work_template_repeating_main_image {
+    padding: 20rem 0;
+    max-width: 80%;
+  }
+
+  .work_template_repeating_main_image_wrapper {
+    padding: 0;
+  }
+
+  .work_template_repeating_mobile_image_wrapper {
+    margin: 0;
+  }
+
+  .work_template_repeating_images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 160rem;
+    margin: 0 auto;
+  }
+
+  .work_template_repeating_mobile_image_wrapper:nth-child(1) {
+    flex-basis: 100%;
+  }
+
+  .work_template_repeating_mobile_image_wrapper:nth-child(2) {
+    margin-top: 30%;
+  }
+
+  .work_template_repeating_mobile_image_wrapper:nth-child(3) {
+    transform: translateY(-32rem);
+  }
+
+  .work_template_repeating_entry {
+    padding: 15rem 6rem;
+
+    &:not(:last-child) {
+      padding-bottom: 20rem;
+    }
+
+    &_header {
+      font-size: 10rem;
+      text-align: left;
+      max-width: auto;
+      padding: 0 10rem;
+      max-width: 120rem;
+    }
+  }
+
+  .work_template_repeat_section {
+    .work_template_repeating_entry_header {
+      font-size: 10rem;
+    }
+
+    .work_template_repeating_entry:nth-child(even) {
+      .work_template_repeating_entry_header {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 53.75em) {
+  .work_template_next_link {
+    padding: 4rem 12rem;
+  }
+}
