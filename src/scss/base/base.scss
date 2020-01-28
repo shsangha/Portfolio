@@ -22,6 +22,7 @@ a:active {
 
 html {
   font-size: 62.5%;
+  box-sizing: border-box;
 
   @include respond(tab-land) {
     font-size: 56.25%;
@@ -43,7 +44,7 @@ html {
 *::-webkit-scrollbar {
   display: none;
 }
-
+/*
 * {
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
@@ -51,6 +52,7 @@ html {
 body {
   scrollbar-width: none;
 }
+*/
 
 a,
 button,
