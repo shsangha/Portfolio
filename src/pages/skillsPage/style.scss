@@ -103,7 +103,7 @@ $base-parallax-perspective: 10px;
 
 .skills_img {
   height: 40rem;
-  margin-top: -20rem;
+  margin-top: -30rem;
 }
 
 .skills_page_hero {
@@ -111,7 +111,14 @@ $base-parallax-perspective: 10px;
   background: black;
 }
 
-@media only screen and (min-width: 45em) {
+@media only screen and (min-width: 37.5em) {
+  .skills_img {
+    margin-top: -30vh;
+    height: 55rem;
+  }
+}
+
+@media only screen and (min-width: 64em) {
   .skills_list {
     text-align: right;
   }
@@ -126,14 +133,14 @@ $base-parallax-perspective: 10px;
   }
 
   .skills_img {
-    margin-top: -30rem;
+    margin-top: -20rem;
 
     transform: translateZ(-1px) translateY(150px) translateX(10px)
       scale(parallax-scale-factor(-1));
   }
 }
 
-@media only screen and (max-height: 500px) {
+@media only screen and (max-height: 600px) {
   .skills_img {
     display: none;
   }
