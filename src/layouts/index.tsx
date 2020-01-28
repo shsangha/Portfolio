@@ -123,7 +123,6 @@ const Layout = ({
                     } animation_controller_slideup ${location.pathname}`}
                   >
                     {children}
-                    {location.pathname !== "/contact" && <Footer />}
                   </div>
                 </CursorContext.Provider>
               </ReactTransition>
