@@ -3,15 +3,16 @@
 .subHead {
   display: flex;
   padding: 0 4rem;
-  padding-bottom: 6rem;
+  padding-right: 0;
+  padding-bottom: 10rem;
 
-  padding-top: 25vh;
+  padding-top: 30vh;
 }
 
 .subHead_logo {
   display: none;
   @include logo-lg;
-  margin-right: calc(25% - 13.5rem);
+  margin-right: 2.5rem;
 }
 .subHead_logo_g {
   fill: blue;
@@ -22,11 +23,11 @@
 }
 
 .subHead_text {
-  font-size: 10rem;
+  font-size: 8rem;
   font-weight: 500;
   color: blue;
   max-width: 60vw;
-  transform: translateY(-3rem);
+  transform: translateY(-2.5rem);
   line-height: 1;
   display: block;
 
@@ -35,22 +36,30 @@
   }
 }
 
-@media only screen and (min-width: 28.125em) {
+@media only screen and (min-width: 25em) {
   .subHead_logo {
     display: block;
+    margin-right: 6rem;
   }
 }
 @media only screen and (min-width: 28.125em) {
   .subHead {
-    padding-top: 35vh;
+    padding: 0 4rem;
+    padding-right: 0;
+    padding-bottom: 10rem;
+    padding-top: 25vh;
   }
 }
 
 @media only screen and (min-width: 53.75em) {
   .subHead {
     padding: 0 15rem;
-    padding-bottom: 5rem;
+    padding-bottom: 8rem;
     padding-top: 35vh;
+  }
+
+  .subHead_logo {
+    margin-right: calc(33% - 11.5rem);
   }
 
   .subHead_text {
