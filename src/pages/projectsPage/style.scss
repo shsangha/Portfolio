@@ -77,11 +77,14 @@ $base-parallax-perspective: 10px;
 }
 
 .section_projects_title {
-  padding: 2rem 10% 12rem 10%;
+  //  padding: 2rem 10% 12rem 10%;
   font-size: 4rem;
   position: relative;
   text-align: center;
   position: relative;
+  display: block;
+  padding-top: 4rem;
+  padding-bottom: 12rem;
 
   &:after {
     content: "";
@@ -105,6 +108,7 @@ $base-parallax-perspective: 10px;
 
 .section_projects_project {
   pointer-events: none;
+  position: relative;
 }
 
 @media only screen and (min-width: 37.5em) {
@@ -134,20 +138,20 @@ $base-parallax-perspective: 10px;
     .section_projects_title {
       font-size: 4rem;
       font-weight: 500;
-      text-align: left;
+      text-align: right;
       position: absolute;
 
       top: 50%;
-      transform: translateX(-15%) translateY(-50%);
+      transform: translateX(20%) translateY(-50%);
 
+      right: 50%;
       left: auto;
-      right: -30vw;
       max-width: 30vw;
       z-index: 2;
 
       &:after {
-        right: auto;
-        left: 40%;
+        left: auto;
+        right: 10%;
         z-index: -1;
         width: 5vw;
         height: 120%;
@@ -157,7 +161,7 @@ $base-parallax-perspective: 10px;
       }
 
       &:hover {
-        transform: translateX(-15%) translateY(-54%);
+        transform: translateX(20%) translateY(-54%);
       }
     }
 
@@ -165,21 +169,22 @@ $base-parallax-perspective: 10px;
       flex-direction: row-reverse;
 
       .section_projects_title {
-        text-align: right;
+        text-align: left;
         position: absolute;
-        left: -30vw;
         right: auto;
-        transform: translateX(15%) translateY(-50%);
+        left: 50%;
+
+        transform: translateX(-20%) translateY(-50%);
 
         &:after {
           z-index: -1;
-          left: auto;
-          right: 40%;
+          left: 10%;
+          right: auto;
           width: 5vw;
           background: white;
         }
         &:hover {
-          transform: translateX(15%) translateY(-54%);
+          transform: translateX(-20%) translateY(-54%);
         }
       }
     }
@@ -240,7 +245,31 @@ $base-parallax-perspective: 10px;
 @media only screen and (min-width: 62.5em) {
   .section_projects_project {
     .section_projects_title {
-      font-size: 6rem;
+      font-size: 7rem;
+
+      transform: translateX(40%) translateY(-50%);
+      max-width: 40vw;
+
+      &:after {
+        right: 30%;
+      }
+
+      &:hover {
+        transform: translateX(40%) translateY(-54%);
+      }
+    }
+
+    &:nth-child(odd) {
+      .section_projects_title {
+        transform: translateX(-40%) translateY(-50%);
+
+        &:after {
+          left: 30%;
+        }
+        &:hover {
+          transform: translateX(-40%) translateY(-54%);
+        }
+      }
     }
   }
 }
