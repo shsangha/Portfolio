@@ -30,6 +30,7 @@ interface Props {
   location: Location
   menuStatus: MenuState
   setMenuStatus: Dispatch<SetStateAction<MenuState>>
+  menuType: string
 }
 
 let tl: any
@@ -39,7 +40,7 @@ const Background = Loadable({
   loading: () => null,
 })
 
-export default ({ setMenuStatus, menuStatus, location }: Props) => {
+export default ({ setMenuStatus, menuStatus, location, menuType }: Props) => {
   const menuRef = useRef<HTMLDivElement>(null)
 
   const [hovered, setHovered] = useState("")
@@ -80,7 +81,7 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
 
   return (
     <div className="menu">
-      <div className="menu_wrapper">
+      <div className={`menu_wrapper ${menuType}`}>
         <div className="menu_content animation_controller_slideup">
           <Background />
           {["about", "skills", "work", "contact"].map(item => (
@@ -88,7 +89,7 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
               key={item}
               to={`/${item}`}
               state={{ animation: "slide-up" }}
-              className={`menu_link ${item} ${
+              className={`menu_link ${item} ${menuType} ${
                 hovered && item !== hovered ? "not_hovered" : ""
               }`}
             >
@@ -144,6 +145,7 @@ export default ({ setMenuStatus, menuStatus, location }: Props) => {
                   height="100%"
                   shapeRendering="crispEdges"
                   stroke-width="10px"
+                  fill={menuType === "light" ? "white" : "black"}
                 />
               </svg>
             </Link>

@@ -4,7 +4,7 @@ import "./styles/belowFold.scss"
 import Img from "gatsby-image"
 import { FluidImage } from "../../../types/index"
 import IntersectionObserverHOC from "../../components/IntersectionObserverTriggerHOC"
-import Projects from "../projectsPage/projects"
+import Projects from "../projectsPage"
 
 const marqeeText = [
   "React",

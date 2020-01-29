@@ -8,7 +8,7 @@ import gsap from "gsap"
 import Header from "../components/header"
 import { ReachRouterLocation, MenuState } from "../../types/index"
 import Cursor from "../components/cursor"
-import Footer from "./footer"
+import Footer from "../components/footer/footer"
 
 import "./layout.scss"
 
@@ -17,6 +17,7 @@ let b: GSAPTimeline | null
 export const CursorContext = createContext({
   focusLink: () => {},
   contrastCursor: () => {},
+  setMenuType: (value: string): void => {},
 })
 
 const timeout = 1100 // can make this a passsble state variable
@@ -27,7 +28,7 @@ const Layout = ({
 }: {
   children: React.ReactElement
   location: ReachRouterLocation
-}) => {
+}): React.ReactNode => {
   const [menuStatus, setMenuStatus]: [
     MenuState,
     Dispatch<SetStateAction<MenuState>>
@@ -46,87 +47,101 @@ const Layout = ({
               menuStatus={menuStatus}
               location={location}
               focusLink={focusLink}
-            />
-
-            <TransitionGroup>
-              <ReactTransition
-                key={location.pathname}
-                appear={false}
-                onEntering={node => {
-                  if (b && b.progress() < 1) {
-                    b.progress(0)
-                    b.clear()
-                  }
-
-                  b = gsap
-                    .timeline({
-                      onComplete: () => {
-                        setMenuStatus({
-                          menuOpen: false,
-                          menuVisible: false,
-                        })
-                      },
-                    })
-                    .set(node, { zIndex: 4 })
-                    .add(() => {
-                      setMenuStatus(prev => ({ ...prev, menuVisible: false }))
-                    })
-                    .fromTo(
-                      node,
-                      1,
-                      {
-                        y: "100vh",
-                      },
-                      {
-                        y: "0vh",
-                        ease: "power3.in",
-                      }
-                    )
-                    .set(node, { zIndex: 0, background: "white" })
-                    .set(node.firstChild, { opacity: 1, y: 0 })
-                }}
-                onExiting={node => {
-                  if (a && a.progress() < 1) {
-                    a.progress(0)
-                    a.clear()
-                  }
-
-                  a = gsap
-                    .timeline()
-                    .set(node, { zIndex: -1 })
-                    .fromTo(
-                      [".menu_wrapper", node.firstChild!],
-                      1,
-                      { y: 0 },
-                      {
-                        y: "-50vh",
-                        ease: "power1",
-                      }
-                    )
-                    .to(
-                      [node.firstChild, ".three_container"],
-                      0.6,
-                      { opacity: 0, ease: "power2" },
-                      "-=1"
-                    )
-                    .to(node, 0.4, { background: "rgba(0,0,0,0.9)" }, "-=1")
-                }}
-                timeout={{
-                  enter: timeout,
-                  exit: timeout,
-                }}
-              >
-                <CursorContext.Provider value={{ focusLink, contrastCursor }}>
-                  <div
-                    className={`container ${
-                      menuStatus.menuOpen ? "disable_scroll" : ""
-                    } animation_controller_slideup ${location.pathname}`}
-                  >
-                    {children}
-                  </div>
-                </CursorContext.Provider>
-              </ReactTransition>
-            </TransitionGroup>
+            >
+              {({ setMenuType }): React.ReactElement => {
+                return (
+                  <TransitionGroup>
+                    <ReactTransition
+                      key={location.pathname}
+                      appear={false}
+                      onEntering={(node: HTMLElement): void => {
+                        if (b && b.progress() < 1) {
+                          b.progress(0)
+                          b.clear()
+                        }
+                        b = gsap
+                          .timeline({
+                            onComplete: () => {
+                              setMenuStatus({
+                                menuOpen: false,
+                                menuVisible: false,
+                              })
+                            },
+                          })
+                          .set(node, { zIndex: 4 })
+                          .add(() => {
+                            setMenuStatus(prev => ({
+                              ...prev,
+                              menuVisible: false,
+                            }))
+                          })
+                          .fromTo(
+                            node,
+                            1,
+                            {
+                              y: "100vh",
+                            },
+                            {
+                              y: "0vh",
+                              ease: "power3.in",
+                            }
+                          )
+                          .set(node, { zIndex: 0, background: "white" })
+                          .set(node.firstChild, { opacity: 1, y: 0 })
+                      }}
+                      onExiting={(node: HTMLElement): void => {
+                        if (a && a.progress() < 1) {
+                          a.progress(0)
+                          a.clear()
+                        }
+                        a = gsap
+                          .timeline()
+                          .set(node, { zIndex: -1 })
+                          .fromTo(
+                            //it forsure will always have a first child
+                            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                            [".menu_wrapper", node.firstChild!],
+                            1,
+                            { y: 0 },
+                            {
+                              y: "-50vh",
+                              ease: "power1",
+                            }
+                          )
+                          .to(
+                            [node.firstChild, ".three_container"],
+                            0.6,
+                            { opacity: 0, ease: "power2" },
+                            "-=1"
+                          )
+                          .to(
+                            node,
+                            0.4,
+                            { background: "rgba(0,0,0,0.9)" },
+                            "-=1"
+                          )
+                      }}
+                      timeout={{
+                        enter: timeout,
+                        exit: timeout,
+                      }}
+                    >
+                      <CursorContext.Provider
+                        value={{ focusLink, contrastCursor, setMenuType }}
+                      >
+                        <div
+                          className={`container ${
+                            menuStatus.menuOpen ? "disable_scroll" : ""
+                          } animation_controller_slideup ${location.pathname}`}
+                        >
+                          {children}
+                        </div>
+                      </CursorContext.Provider>
+                    </ReactTransition>
+                  </TransitionGroup>
+                )
+              }}
+            </Header>
           </div>
         )
       }}

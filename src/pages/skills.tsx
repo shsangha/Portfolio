@@ -1,4 +1,12 @@
 import React from "react"
+
+import WrapPage from "../components/wrapPage"
 import Skills from "./skillsPage"
 
-export default props => <Skills {...props} />
+const SkillsPage = WrapPage(Skills)
+
+export default props => (
+  <>
+    <SkillsPage {...props} />
+  </>
+)
