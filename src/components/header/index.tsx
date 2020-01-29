@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, Dispatch, SetStateAction } from "react"
+import React, {
+  useEffect,
+  useRef,
+  Dispatch,
+  SetStateAction,
+  useState,
+} from "react"
 import "./header.scss"
 import Menu from "./menu"
 import { MenuState } from "../../../types/index"
@@ -8,20 +14,33 @@ interface Props {
   location: Location
   menuStatus: MenuState
   setMenuStatus: Dispatch<SetStateAction<MenuState>>
+  children: ({
+    setMenuType,
+  }: {
+    setMenuType: Dispatch<SetStateAction<string>>
+  }) => React.ReactElement
   focusLink: () => {
     onMouseEnter: () => void
     onMouseLeave: () => void
   }
 }
 
-export default ({ location, menuStatus, setMenuStatus, focusLink }: Props) => {
+export default ({
+  location,
+  menuStatus,
+  setMenuStatus,
+  focusLink,
+  children,
+}: Props): React.ReactElement => {
   const path = location.pathname
     .split("/")
     .filter((path, index) => index !== 0 && path !== "")
 
   const buttonRef = useRef<HTMLButtonElement>(null)
 
-  const toggleMenu = () => {
+  const [menuType, setMenuType] = useState("dark")
+
+  const toggleMenu = (): void => {
     setMenuStatus(prevStatus => {
       if (prevStatus.menuOpen) {
         return {
@@ -117,18 +136,15 @@ export default ({ location, menuStatus, setMenuStatus, focusLink }: Props) => {
           </div>
         </div>
       </header>
+      {children({ setMenuType })}
       {menuStatus.menuOpen && (
         <Menu
           menuStatus={menuStatus}
           location={location}
           setMenuStatus={setMenuStatus}
+          menuType={menuType}
         />
       )}
     </>
   )
 }
-
-/*
-
-
-*/
