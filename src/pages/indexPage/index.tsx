@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, Dispatch, SetStateAction } from "react"
 import { TimelineLite } from "gsap"
 import "./styles/index.scss"
 import { graphql, StaticQuery } from "gatsby"
@@ -15,11 +15,14 @@ export default (props: {
   location: Location
   contrastCursor: Function
   focusLink: Function
+  setMenuType: Dispatch<SetStateAction<string>>
 }) => {
   console.log(props)
 
   useEffect(() => {
     const myTimeline = new TimelineLite()
+
+    props.setMenuType("dark")
 
     myTimeline.staggerFromTo(
       ".intro_header_span",
