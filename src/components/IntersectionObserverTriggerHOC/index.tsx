@@ -1,8 +1,11 @@
 import React, { useEffect } from "react"
 
-export default (Component: React.ElementType) => (props: any) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default (Component: React.ReactNode) => (
+  props: any
+): React.ReactNode => {
   useEffect(() => {
-    let options = {
+    const options = {
       threshold: 0.6,
     }
 
@@ -19,7 +22,7 @@ export default (Component: React.ElementType) => (props: any) => {
       observer.observe(item)
     })
 
-    return () => {
+    return (): void => {
       observer.disconnect()
     }
   }, [])
