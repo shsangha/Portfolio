@@ -1,37 +1,7 @@
 import React, { useEffect, Dispatch, SetStateAction } from "react"
 import "./style.scss"
 
-export default ({
-  setMenuType,
-}: {
-  setMenuType: Dispatch<SetStateAction<string>>
-}) => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      element => {
-        if (element[0].isIntersecting) {
-          if (window.innerHeight / element[0].target.clientHeight > 0.5) {
-            setMenuType("light")
-          }
-        } else if (!element[0].isIntersecting) {
-          if (window.innerHeight / element[0].target.clientHeight > 0.5) {
-            setMenuType("dark")
-          } //safe assumption based on the way pages are laid out and where footer is actually placed
-        }
-      },
-      { threshold: 0.55 }
-    )
-
-    const target = document.querySelector(".observe_footer")
-    if (target) {
-      observer.observe(target)
-    }
-
-    return (): void => {
-      observer.disconnect()
-    }
-  }, [])
-
+export default () => {
   return (
     <footer className="footer observe_footer">
       <div className="footer_content">
