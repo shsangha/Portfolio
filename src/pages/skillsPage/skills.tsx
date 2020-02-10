@@ -32,33 +32,36 @@ const marqeeText = [
 
 export default ({
   setMenuType,
+  menuStatus,
 }: {
   setMenuType: Dispatch<SetStateAction<string>>
 }): React.ReactNode => {
   useEffect(() => {
-    setMenuType("light")
+    //need to implement the strategy where color changes on entry exit with data-color
 
-    const observer = new IntersectionObserver(
-      entry => {
-        console.log("hitting")
+    if (menuStatus.menuOpen) {
+      const observer = new IntersectionObserver(
+        entry => {
+          if (!entry[0].isIntersecting) {
+            console.log(menuStatus)
 
-        if (!entry[0].isIntersecting) {
-          setMenuType("dark")
-        } else if (entry[0].isIntersecting) {
-          setMenuType("light")
-        }
-      },
-      { threshold: 0.5 }
-    )
+            setMenuType("dark")
+          } else if (entry[0].isIntersecting) {
+            setMenuType("light")
+          }
+        },
+        { threshold: 0.5 }
+      )
 
-    const hero = document.querySelector(".skills_page_watch_exit")
+      const hero = document.querySelector(".skills_page_watch_exit")
 
-    if (hero) {
-      observer.observe(hero)
+      if (hero) {
+        observer.observe(hero)
+      }
+
+      return (): void => observer.disconnect()
     }
-
-    //return (): void => observer.disconnect()
-  }, [])
+  }, [menuStatus.menuOpen])
 
   return (
     <>

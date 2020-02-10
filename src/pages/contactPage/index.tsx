@@ -7,6 +7,7 @@ import "./style.scss"
 export default ({
   setMenuType,
   focusLink,
+  menuStatus,
 }: {
   setMenuType: Dispatch<SetStateAction<string>>
   focusLink: () => {
@@ -14,10 +15,6 @@ export default ({
     onMouseLeave: () => void
   }
 }): React.ReactNode => {
-  useEffect(() => {
-    setMenuType("dark")
-  }, [])
-
   return (
     <StaticQuery
       query={graphql`

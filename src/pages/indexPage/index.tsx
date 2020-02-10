@@ -16,13 +16,10 @@ export default (props: {
   contrastCursor: Function
   focusLink: Function
   setMenuType: Dispatch<SetStateAction<string>>
-}) => {
-  console.log(props)
-
+  menuStatus: any
+}): React.ReactNode => {
   useEffect(() => {
     const myTimeline = new TimelineLite()
-
-    props.setMenuType("dark")
 
     myTimeline.staggerFromTo(
       ".intro_header_span",

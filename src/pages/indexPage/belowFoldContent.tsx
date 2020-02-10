@@ -4,7 +4,8 @@ import "./styles/belowFold.scss"
 import Img from "gatsby-image"
 import { FluidImage } from "../../../types/index"
 import IntersectionObserverHOC from "../../components/IntersectionObserverTriggerHOC"
-import Projects from "../projectsPage"
+import Projects from "../projectsPage/projects"
+import Footer from "../../components/footer"
 
 const marqeeText = [
   "React",
@@ -128,6 +129,7 @@ const BelowFold = (props: {
                 </div>
               </div>
             </section>
+            <Footer />
           </>
         )
       }}

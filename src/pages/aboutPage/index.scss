@@ -1,3 +1,4 @@
+@import "../../scss/variables/colors.scss";
 $base-parallax-perspective: 10px;
 
 @function parallax-scale-factor($z-distance) {
@@ -6,7 +7,7 @@ $base-parallax-perspective: 10px;
 }
 
 .about_page {
-  background: black;
+  background: $color-dark-main;
   transform-style: preserve-3d;
 }
 
@@ -20,9 +21,10 @@ $base-parallax-perspective: 10px;
   transform-style: preserve-3d;
 }
 .about_page_summary {
-  padding: 10rem 4rem;
-
-  color: black;
+  display: flex;
+  align-items: center;
+  min-height: 70vh;
+  color: $color-dark-main;
   margin-left: auto;
   text-align: center;
 }
@@ -51,22 +53,31 @@ $base-parallax-perspective: 10px;
   display: flex;
   align-items: center;
   min-height: 110vh;
+  padding: 0 5rem;
 
   .about_page_row_text {
-    color: black;
+    color: $color-dark-main;
   }
 
-  &:nth-of-type(even) {
-    background: black;
+  .about_page_row_content {
+    margin-left: auto;
+  }
+
+  &:last-child {
+    padding-bottom: 15rem;
+  }
+
+  &:nth-of-type(odd) {
+    background: $color-dark-main;
 
     .about_page_row_content {
       //max-width: 40%;
-      margin-left: auto;
+      margin-left: 0;
     }
 
     .about_page_row_header,
     .about_page_row_text {
-      color: white;
+      color: $color-light-main;
     }
   }
 
@@ -80,7 +91,7 @@ $base-parallax-perspective: 10px;
 }
 
 .about_page_row_content {
-  padding: 2rem;
+  padding: 1.5rem;
   //  max-width: 40%;
   justify-self: flex-end;
 }
@@ -99,6 +110,10 @@ $base-parallax-perspective: 10px;
 
     transform: translateZ(-1px) translateY(70px) translateX(1.5vw)
       scale(parallax-scale-factor(-1));
+  }
+
+  .about_page_row {
+    padding: 0 10rem;
   }
 
   .about_page_summary {
@@ -120,6 +135,7 @@ $base-parallax-perspective: 10px;
   .about_page_row_content {
     max-width: 70%;
     padding: 0 4rem;
+    font-size: 2rem;
   }
 }
 

@@ -1,9 +1,11 @@
 import React, { useEffect, Dispatch, SetStateAction } from "react"
 import SubHead from "../../components/subHead"
+import Footer from "../../components/footer"
 import "./index.scss"
 
 export default ({
   setMenuType,
+  menuStatus,
 }: {
   setMenuType: Dispatch<SetStateAction<string>>
 }): React.ReactNode => {
@@ -12,28 +14,30 @@ export default ({
       threshold: 0.55,
     }
 
-    setMenuType("light")
+    if (!menuStatus.menuOpen) {
+      const observer = new IntersectionObserver(element => {
+        if (element[0].isIntersecting) {
+          const color = element[0].target.getAttribute("data-color")
 
-    const observer = new IntersectionObserver(element => {
-      if (element[0].isIntersecting) {
-        const color = element[0].target.getAttribute("data-color")
-
-        if (color) {
-          setMenuType(color)
+          if (color) {
+            setMenuType(color)
+          }
+        } else if (element[0].target.id === "about_page_hero") {
+          setMenuType("dark")
         }
-      } else if (element[0].target.id === "about_page_hero") {
-        setMenuType("dark")
+      }, options)
+
+      document
+        .querySelectorAll(".about_page_ovserver_target")
+        .forEach(entry => {
+          observer.observe(entry)
+        })
+
+      return (): void => {
+        observer.disconnect()
       }
-    }, options)
-
-    document.querySelectorAll(".about_page_ovserver_target").forEach(entry => {
-      observer.observe(entry)
-    })
-
-    return (): void => {
-      observer.disconnect()
     }
-  }, [])
+  }, [menuStatus.menuOpen])
 
   return (
     <>
@@ -58,73 +62,69 @@ export default ({
           repellat in recusandae ipsam. Esse.
         </p>
       </h2>
-      <h3 className="about_page_mission">
-        <p className="about_page_mission_text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa a
-          assumenda aspernatur similique voluptatibus earum mollitia maxime
-        </p>
-      </h3>
-
-      <div
-        data-color="light"
-        className="about_page_row about_page_ovserver_target"
-      >
-        <div className="about_page_row_content">
-          <h3 className="about_page_row_header">How I work</h3>
-          <p className="about_page_row_text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
-            repellendus laudantium laboriosam quasi perferendis molestiae.
-            Voluptatibus doloremque, consequatur recusandae necessitatibus
-            corrupti eum ut molestiae blanditiis corporis dicta adipisci saepe
-            numquam.
-          </p>
+      <div>
+        <div
+          data-color="light"
+          className="about_page_row about_page_ovserver_target"
+        >
+          <div className="about_page_row_content">
+            <h3 className="about_page_row_header">How I work</h3>
+            <p className="about_page_row_text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
+              repellendus laudantium laboriosam quasi perferendis molestiae.
+              Voluptatibus doloremque, consequatur recusandae necessitatibus
+              corrupti eum ut molestiae blanditiis corporis dicta adipisci saepe
+              numquam.
+            </p>
+          </div>
+        </div>
+        <div
+          data-color="dark"
+          className="about_page_row about_page_ovserver_target"
+        >
+          <div className="about_page_row_content">
+            <h3 className="about_page_row_header">How I work</h3>
+            <p className="about_page_row_text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
+              repellendus laudantium laboriosam quasi perferendis molestiae.
+              Voluptatibus doloremque, consequatur recusandae necessitatibus
+              corrupti eum ut molestiae blanditiis corporis dicta adipisci saepe
+              numquam.
+            </p>
+          </div>
+        </div>
+        <div
+          data-color="light"
+          className="about_page_row about_page_ovserver_target"
+        >
+          <div className="about_page_row_content">
+            <h3 className="about_page_row_header">How I work</h3>
+            <p className="about_page_row_text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
+              repellendus laudantium laboriosam quasi perferendis molestiae.
+              Voluptatibus doloremque, consequatur recusandae necessitatibus
+              corrupti eum ut molestiae blanditiis corporis dicta adipisci saepe
+              numquam.
+            </p>
+          </div>
+        </div>
+        <div
+          data-color="dark"
+          className="about_page_row about_page_ovserver_target"
+        >
+          <div className="about_page_row_content">
+            <h3 className="about_page_row_header">How I work</h3>
+            <p className="about_page_row_text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
+              repellendus laudantium laboriosam quasi perferendis molestiae.
+              Voluptatibus doloremque, consequatur recusandae necessitatibus
+              corrupti eum ut molestiae blanditiis corporis dicta adipisci saepe
+              numquam.
+            </p>
+          </div>
         </div>
       </div>
-      <div
-        data-color="dark"
-        className="about_page_row about_page_ovserver_target"
-      >
-        <div className="about_page_row_content">
-          <h3 className="about_page_row_header">How I work</h3>
-          <p className="about_page_row_text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
-            repellendus laudantium laboriosam quasi perferendis molestiae.
-            Voluptatibus doloremque, consequatur recusandae necessitatibus
-            corrupti eum ut molestiae blanditiis corporis dicta adipisci saepe
-            numquam.
-          </p>
-        </div>
-      </div>
-      <div
-        data-color="light"
-        className="about_page_row about_page_ovserver_target"
-      >
-        <div className="about_page_row_content">
-          <h3 className="about_page_row_header">How I work</h3>
-          <p className="about_page_row_text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
-            repellendus laudantium laboriosam quasi perferendis molestiae.
-            Voluptatibus doloremque, consequatur recusandae necessitatibus
-            corrupti eum ut molestiae blanditiis corporis dicta adipisci saepe
-            numquam.
-          </p>
-        </div>
-      </div>
-      <div
-        data-color="dark"
-        className="about_page_row about_page_ovserver_target"
-      >
-        <div className="about_page_row_content">
-          <h3 className="about_page_row_header">How I work</h3>
-          <p className="about_page_row_text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
-            repellendus laudantium laboriosam quasi perferendis molestiae.
-            Voluptatibus doloremque, consequatur recusandae necessitatibus
-            corrupti eum ut molestiae blanditiis corporis dicta adipisci saepe
-            numquam.
-          </p>
-        </div>
-      </div>
+      <Footer />
     </>
   )
 }
