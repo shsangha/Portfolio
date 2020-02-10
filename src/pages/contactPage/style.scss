@@ -1,4 +1,5 @@
 @import "../../scss/mixins/hoverhighlight.scss";
+@import "../../scss/variables/colors.scss";
 
 $base-parallax-perspective: 10px;
 
@@ -14,7 +15,7 @@ $base-parallax-perspective: 10px;
 }
 
 .section_contact {
-  background: white;
+  background: $color-light-main;
 }
 
 .section_contact_scroll_wrapper {
@@ -52,7 +53,7 @@ $base-parallax-perspective: 10px;
 .section_contact_header {
   grid-column: 2;
   align-self: center;
-  color: blue;
+  color: $color-blue-main;
 }
 
 .section_contact_content {
@@ -95,7 +96,7 @@ $base-parallax-perspective: 10px;
 }
 
 .section_contact_footer {
-  background: black;
+  background: $color-dark-accent;
   height: 25rem;
   z-index: -1;
   margin-top: 10rem;
@@ -103,7 +104,7 @@ $base-parallax-perspective: 10px;
 }
 
 .section_contact_footer_content {
-  color: white;
+  color: $color-light-main;
   display: flex;
   justify-content: center;
   padding: 0 5rem;

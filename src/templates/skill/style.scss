@@ -1,3 +1,5 @@
+@import "../../scss/variables/colors.scss";
+
 .skills_template_summary_wrapper {
   margin: 0 auto;
   margin-bottom: 6rem;
@@ -68,7 +70,7 @@
 
     .skills_template_project_link {
       font-size: 2rem;
-      color: black;
+      color: $color-dark-accent;
       align-self: center;
       display: inline-block;
 
@@ -79,7 +81,7 @@
   }
 
   &:nth-child(even) {
-    background: black;
+    background: $color-dark-main;
 
     .skills_template_list_item {
       flex-direction: row-reverse;
@@ -88,7 +90,7 @@
     .skills_template_project_desc,
     .skills_template_project_title,
     .skills_template_project_link {
-      color: white;
+      color: $color-light-accent;
     }
   }
 }
@@ -101,21 +103,21 @@
 
   .skills_template_next_link_text {
     font-size: 2rem;
-    color: black;
+    color: $color-dark-accent;
   }
 
   .skills_template_next_link_project_title {
     font-size: 12rem;
-    color: black;
+    color: $color-dark-accent;
   }
 
   &.even {
-    background: black;
+    background: $color-dark-main;
 
     .skills_template_next_link,
     .skills_template_next_link_text,
     .skills_template_next_link_project_title {
-      color: white;
+      color: $color-light-accent;
     }
   }
 }

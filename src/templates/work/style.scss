@@ -1,6 +1,8 @@
+@import "../../scss/variables/colors.scss";
+
 .work_template {
   padding-top: 17.5rem;
-  background: black;
+  background: $color-dark-main;
   &_hero_image {
     width: 100%;
   }
@@ -10,7 +12,7 @@
     top: -6rem;
     font-size: 10rem;
     line-height: 1;
-    color: white;
+    color: $color-light-main;
   }
 }
 
@@ -24,7 +26,7 @@
 
 .work_template_skills_wrapper {
   max-width: 40rem;
-  border-left: 1px solid white;
+  border-left: 1px solid $color-light-accent;
   padding-left: 1rem;
   align-self: flex-start;
 }
@@ -35,19 +37,19 @@
   padding-bottom: 6rem;
   display: flex;
   flex-direction: column;
-  color: white;
+  color: $color-light-accent;
 }
 
 .work_template_skills_header {
   margin-bottom: 1rem;
   font-size: 2rem;
-  color: white;
+  color: $color-light-accent;
 }
 
 .work_template_skills_list_item {
   list-style: none;
   font-size: 1.5rem;
-  color: white;
+  color: $color-light-accent;
 }
 
 .work_template_main_image_wrapper,
@@ -90,10 +92,10 @@
   padding: 10rem 2rem;
 
   &:nth-child(odd) {
-    background: white;
+    background: $color-light-main;
 
     .work_template_repeating_entry_header {
-      color: black;
+      color: $color-dark-accent;
     }
   }
 
@@ -104,7 +106,7 @@
   &_header {
     font-size: 5rem;
     text-align: center;
-    color: white;
+    color: $color-light-accent;
   }
 }
 
@@ -113,25 +115,24 @@
   flex-direction: column;
   padding: 3rem;
   margin-top: 5rem;
-  background: white;
+  background: $color-light-main;
 
   .work_template_next_link_text {
     font-size: 2rem;
-    color: black;
+    color: $color-dark-accent;
   }
 
   .work_template_next_link_project_title {
     font-size: 12rem;
-    color: black;
+    color: $color-dark-accent;
   }
 
   &.even {
-    background: black;
-
+    background: $color-dark-main;
     .work_template_next_link,
     .work_template_next_link_text,
     .work_template_next_link_project_title {
-      color: white;
+      color: $color-light-accent;
     }
   }
 }
@@ -151,7 +152,7 @@
       left: 50%;
       font-size: 12rem;
       line-height: 1;
-      color: white;
+      color: $color-light-main;
       margin-bottom: 10rem;
     }
   }

@@ -1,4 +1,5 @@
 $base-parallax-perspective: 10px;
+@import "../../../scss/variables/colors.scss";
 
 @function parallax-scale-factor($z-distance) {
   @return ($base-parallax-perspective - $z-distance) /
@@ -28,7 +29,7 @@ $base-parallax-perspective: 10px;
     bottom: 0;
     left: 0;
     right: 0;
-    background: white;
+    background: $color-light-main;
     animation: introFade 2s linear 1;
     animation-fill-mode: forwards;
   }
@@ -58,7 +59,7 @@ $base-parallax-perspective: 10px;
   z-index: 10;
   position: relative;
   top: 25vh;
-  color: blue;
+  color: $color-blue-main;
   margin-bottom: 30vh;
   transform-style: preserve-3d;
   transform: translateZ(-3px) translateY(20vh) translateX(15vw)

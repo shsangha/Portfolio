@@ -1,3 +1,5 @@
+@import "../../scss/variables/colors.scss";
+
 .footer {
   display: flex;
   align-items: flex-end;
@@ -6,7 +8,7 @@
 
 .footer_content {
   position: relative;
-  background: black;
+  background: $color-dark-accent;
   display: flex;
   width: 100%;
 }
@@ -34,16 +36,16 @@
 
 .footer_contact_label {
   font-size: 1.5rem;
-  color: white;
+  color: $color-light-main;
 }
 
 .footer_contact_link {
-  color: white;
+  color: $color-light-main;
   font-size: 2rem;
 }
 
 .footer_aside {
-  color: white;
+  color: $color-light-main;
   display: flex;
   flex-direction: column;
   padding-bottom: 4rem;
@@ -57,7 +59,7 @@
 }
 
 .footer_logo_g {
-  fill: white;
+  fill: $color-light-main;
 }
 
 .footer_text {
@@ -87,7 +89,7 @@
 
   &:hover {
     .footer_arrow_svg {
-      fill: blue;
+      fill: $color-blue-main;
     }
   }
 }

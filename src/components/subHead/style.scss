@@ -1,4 +1,5 @@
 @import "../../scss/mixins/logo.scss";
+@import "../../scss/variables/colors.scss";
 
 .subHead {
   display: flex;
@@ -15,24 +16,24 @@
   margin-right: 2.5rem;
 }
 .subHead_logo_g {
-  fill: blue;
+  fill: $color-blue-main;
 
   &.dark {
-    fill: white;
+    fill: $color-light-main;
   }
 }
 
 .subHead_text {
   font-size: 8rem;
   font-weight: 500;
-  color: blue;
+  color: $color-blue-main;
   max-width: 60vw;
   transform: translateY(-2.5rem);
   line-height: 1;
   display: block;
 
   &.dark {
-    color: white;
+    color: $color-light-main;
   }
 }
 

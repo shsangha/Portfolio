@@ -1,5 +1,6 @@
 @import "../mixins/respond.scss";
 @import "./typography.scss";
+@import "../variables/colors.scss";
 *,
 *::after,
 *::before {
@@ -44,15 +45,15 @@ html {
 *::-webkit-scrollbar {
   display: none;
 }
-/*
+
 * {
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 body {
   scrollbar-width: none;
+  background: $color-light-main;
 }
-*/
 
 a,
 button,
