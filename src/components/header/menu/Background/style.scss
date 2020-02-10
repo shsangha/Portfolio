@@ -8,10 +8,22 @@
   transform: scale(0.95);
   transform-origin: 50% 50%;
   overflow: hidden;
+  opacity: 0;
+  animation: fakeContainer 1s linear forwards;
 }
 
 @media only screen and (min-width: 53.125em) {
   .three_container {
     grid-column: 3;
+  }
+}
+
+@keyframes fadeContainer {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
