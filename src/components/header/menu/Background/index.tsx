@@ -194,11 +194,10 @@ export default () => {
     }
 
     const recursiveAnimation = () => {
-      animationFrameID = requestAnimationFrame(recursiveAnimation)
-
       shaderMat.uniforms.time.value += 0.025
 
       renderer.render(scene, camera)
+      animationFrameID = requestAnimationFrame(recursiveAnimation)
     }
 
     window.addEventListener("resize", handleResize)
