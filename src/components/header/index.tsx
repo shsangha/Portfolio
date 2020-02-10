@@ -7,6 +7,7 @@ import React, {
 } from "react"
 import "./header.scss"
 import Menu from "./menu"
+import { Transition, TransitionGroup } from "react-transition-group"
 import { MenuState } from "../../../types/index"
 import { Link } from "gatsby"
 
@@ -93,15 +94,26 @@ export default ({
             </div>
 
             <div>
-              <div className="header_breadcrumbs">
+              <TransitionGroup className="header_breadcrumbs">
                 {path.map(item => {
                   return (
-                    <div key={item} className="header_breadcrumb">
-                      {item}
-                    </div>
+                    <Transition
+                      key={item}
+                      timeout={{
+                        enter: 500,
+                        exit: 0,
+                      }}
+                    >
+                      {status => (
+                        <div className={`header_breadcrumb ${status}`}>
+                          {item}
+                        </div>
+                      )}
+                    </Transition>
                   )
                 })}
-              </div>
+              </TransitionGroup>
+
               {path.length > 0 && (
                 <div className="header_home_breadcrumb header_breadcrumb">
                   home
