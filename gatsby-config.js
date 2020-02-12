@@ -1,4 +1,4 @@
-const proxy = require("http-proxy-middleware")
+require("dotenv").config()
 
 module.exports = {
   pathPrefix: "/",
@@ -86,8 +86,13 @@ module.exports = {
         icon: `static/img/card.jpg`,
       },
     },
-    "gatsby-plugin-netlify-cms",
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.SPACE_ID,
+        accessToken: process.env.API,
+      },
+    },
     `gatsby-plugin-offline`,
-    // "gatsby-plugin-netlify"
   ],
 }
