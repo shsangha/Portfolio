@@ -13,15 +13,38 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 }
 
 exports.createPages = ({ actions: { createPage }, graphql, reporter }) => {
-  createPage({
-    path: "/work/example",
-    component: path.resolve("./src/templates/work/index.tsx"),
-    context: {},
-  })
-
-  createPage({
-    path: "/skills/example",
-    component: path.resolve("./src/templates/skill/index.tsx"),
-    context: {},
-  })
+  return graphql(`
+    query Pages {
+      work: allContentfulProject {
+        edges {
+          next {
+            title
+            slug
+          }
+          node {
+            id
+            title
+            slug
+          }
+        }
+      }
+    }
+  `).then(
+    ({
+      data: {
+        work: { edges },
+      },
+    }) => {
+      edges.map(({ node: { id, title, slug }, next }) => {
+        createPage({
+          path: `/work/${slug}`,
+          component: path.resolve("./src/templates/work/index.tsx"),
+          context: {
+            id,
+            next,
+          },
+        })
+      })
+    }
+  )
 }
