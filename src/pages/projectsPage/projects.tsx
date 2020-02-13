@@ -19,84 +19,52 @@ export default ({
     <StaticQuery
       query={graphql`
         query {
-          project1sm: file(relativePath: { eq: "project1sm.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-
-          project1lg: file(relativePath: { eq: "project1lg.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid
+          allContentfulProject(
+            sort: { order: ASC, fields: priority }
+            limit: 3
+          ) {
+            nodes {
+              title
+              slug
+              preview {
+                fluid {
+                  ...GatsbyContentfulFluid
+                }
               }
             }
           }
         }
       `}
-      render={data => {
-        const [project1Sources, project2Sources, project3Sources] = [
-          1,
-          1,
-          1,
-        ].map(idx => {
-          return [
-            data[`project${idx}sm`].childImageSharp.fluid,
-
-            {
-              ...data[`project${idx}lg`].childImageSharp.fluid,
-              media: "(minWidth: 56.25em)",
-            },
-          ]
-        })
-
+      render={({ allContentfulProject: { nodes } }) => {
         return (
           <>
             <section className="section_projects">
               <div className="section_projects_content">
                 <div className="section_projects_list">
-                  <div className="section_projects_project observe">
-                    <div {...focusLink()} className="section_projects_wrapper">
-                      <Img
-                        fluid={project1Sources}
-                        className="section_projects_img slide_img "
-                      />
-                    </div>
-                    <Link
-                      to="/projects/a"
-                      className="section_projects_title fadein_text "
+                  {nodes.map(({ title, slug, preview: { fluid } }) => (
+                    <div
+                      key={title}
+                      className="section_projects_project observe"
                     >
-                      Lorem ipsum dolor,
-                    </Link>
-                  </div>
-                  <div className="section_projects_project observe">
-                    <div {...focusLink()} className="section_projects_wrapper">
-                      <Img
-                        fluid={project2Sources}
-                        className="section_projects_img slide_img  "
-                      />
+                      <Link
+                        to={`/work/${slug}`}
+                        {...focusLink()}
+                        className="section_projects_wrapper"
+                      >
+                        <Img
+                          fluid={fluid}
+                          className="section_projects_img slide_img  "
+                        />
+                      </Link>
+                      <Link
+                        to={`/work/${slug}`}
+                        {...focusLink()}
+                        className="section_projects_title fadein_text "
+                      >
+                        {title}
+                      </Link>
                     </div>
-                    <Link
-                      to="/projects/a"
-                      className="section_projects_title fadein_text "
-                    >
-                      Lorem ipsum dolor,
-                    </Link>
-                  </div>
-                  <div className="section_projects_project observe">
-                    <div {...focusLink()} className="section_projects_wrapper">
-                      {" "}
-                      <Img
-                        fluid={project3Sources}
-                        className="section_projects_img slide_img "
-                      />
-                    </div>
-                    <Link to="" className="section_projects_title fadein_text">
-                      Lorem ipsum dolor,
-                    </Link>
-                  </div>
+                  ))}
                 </div>
                 <a
                   href="https://github.com/shsangha"
