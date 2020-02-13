@@ -15,6 +15,21 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 exports.createPages = ({ actions: { createPage }, graphql, reporter }) => {
   return graphql(`
     query Pages {
+      skills: allContentfulSkill {
+        edges {
+          next {
+            slug
+            title
+          }
+
+          node {
+            id
+            title
+            slug
+          }
+        }
+      }
+
       work: allContentfulProject {
         edges {
           next {
@@ -29,13 +44,9 @@ exports.createPages = ({ actions: { createPage }, graphql, reporter }) => {
         }
       }
     }
-  `).then(
-    ({
-      data: {
-        work: { edges },
-      },
-    }) => {
-      edges.map(({ node: { id, title, slug }, next }) => {
+  `)
+    .then(({ data: { work, skills } }) => {
+      work.edges.map(({ node: { id, slug }, next }) => {
         createPage({
           path: `/work/${slug}`,
           component: path.resolve("./src/templates/work/index.tsx"),
@@ -45,6 +56,19 @@ exports.createPages = ({ actions: { createPage }, graphql, reporter }) => {
           },
         })
       })
-    }
-  )
+
+      skills.edges.map(({ node: { id, slug }, next }) => {
+        createPage({
+          path: `/skills/${slug}`,
+          component: path.resolve("./src/templates/skill/index.tsx"),
+          context: {
+            id,
+            next,
+          },
+        })
+      })
+    })
+    .catch(e => {
+      reporter.panicOnBuild(e.message, "error in node")
+    })
 }
