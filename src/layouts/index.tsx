@@ -10,8 +10,6 @@ import { ReachRouterLocation, MenuState } from "../../types/index"
 import Cursor from "../components/cursor"
 import MenuColorHelper from "./menuColorHelper"
 
-import { entering, exiting } from "./layoutAnimations/menu"
-
 import "./layout.scss"
 
 let activeEnterTimeline: GSAPTimeline | null = null
@@ -24,12 +22,9 @@ export const CursorContext = createContext({
   menuStatus: {},
 })
 
-const timeout = 2000 // can make this a passsble state variable
-
 const Layout = ({
   children,
   location,
-  ...rest
 }: {
   children: React.ReactElement
   location: ReachRouterLocation
