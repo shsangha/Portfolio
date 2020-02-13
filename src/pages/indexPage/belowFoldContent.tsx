@@ -7,30 +7,6 @@ import IntersectionObserverHOC from "../../components/IntersectionObserverTrigge
 import Projects from "../projectsPage/projects"
 import Footer from "../../components/footer"
 
-const marqeeText = [
-  "React",
-  "Jest",
-  "Cypress",
-  "Node",
-  "RxJs",
-  "Java",
-  "MongoDB",
-  "Postgres",
-  "Scss",
-  "Javascript",
-  "Typescript",
-  "Docker",
-  "Elasticsearch",
-  "Gatsby",
-  "GraphQL",
-  "Redux",
-  "Express",
-  "XD",
-  "Illustrator",
-  "HTML",
-  "A11Y",
-]
-
 const BelowFold = (props: {
   location: Location
   contrastCursor: Function
@@ -40,6 +16,14 @@ const BelowFold = (props: {
     <StaticQuery
       query={graphql`
         query {
+          allContentfulSkill {
+            edges {
+              node {
+                title
+              }
+            }
+          }
+
           aboutImage: file(relativePath: { eq: "placeholder.jpg" }) {
             childImageSharp {
               fluid(maxWidth: 600) {
@@ -49,7 +33,9 @@ const BelowFold = (props: {
           }
         }
       `}
-      render={(data: { [key: string]: FluidImage }) => {
+      render={(data: { [key: string]: FluidImage }): React.ReactNode => {
+        console.log(data)
+
         return (
           <>
             <section className="section_about">
@@ -87,18 +73,22 @@ const BelowFold = (props: {
               <div className="wrapper">
                 <div className="marquee_wrapper observe ">
                   <div className="marquee backward fadeMarquee">
-                    {marqeeText.map(item => (
-                      <div key={item} className="marquee_item">
-                        {item}
-                      </div>
-                    ))}
+                    {data.allContentfulSkill.edges.map(
+                      ({ node: { title } }) => (
+                        <div key={title} className="marquee_item">
+                          {title}
+                        </div>
+                      )
+                    )}
                   </div>
                   <div className="marquee backward fadeMarquee">
-                    {marqeeText.map(item => (
-                      <div key={item} className="marquee_item">
-                        {item}
-                      </div>
-                    ))}
+                    {data.allContentfulSkill.edges.map(
+                      ({ node: { title } }) => (
+                        <div key={title} className="marquee_item">
+                          {title}
+                        </div>
+                      )
+                    )}
                   </div>
                 </div>
                 <div className="section_skills_content">
@@ -113,18 +103,22 @@ const BelowFold = (props: {
                 </div>
                 <div className="marquee_wrapper observe ">
                   <div className="marquee forward  fadeMarquee">
-                    {marqeeText.map(item => (
-                      <div key={item} className="marquee_item">
-                        {item}
-                      </div>
-                    ))}
+                    {data.allContentfulSkill.edges.map(
+                      ({ node: { title } }) => (
+                        <div key={title} className="marquee_item">
+                          {title}
+                        </div>
+                      )
+                    )}
                   </div>
                   <div className="marquee forward fadeMarquee">
-                    {marqeeText.map(item => (
-                      <div key={item} className="marquee_item">
-                        {item}
-                      </div>
-                    ))}
+                    {data.allContentfulSkill.edges.map(
+                      ({ node: { title } }) => (
+                        <div key={title} className="marquee_item">
+                          {title}
+                        </div>
+                      )
+                    )}
                   </div>
                 </div>
               </div>
