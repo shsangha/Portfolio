@@ -1,83 +1,50 @@
 import React from "react"
 import SubHead from "../../components/subHead"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import "./style.scss"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { INLINES, BLOCKS } from "@contentful/rich-text-types"
 
-import card from "../../../static/img/card.jpg"
-
-const Skill = () => (
+const Skill = ({ data: { contentfulSkill }, pageContext: { next } }) => (
   <div className="skill_template">
-    <SubHead>Skill Name</SubHead>
-    <div className="skills_template_summary_wrapper">
-      <div className="skill_template_lists_wrapper">
-        <div className="skill_template_xp_wrapper">
-          <h3>Experience:</h3>
-          <p>5 years</p>
-        </div>
-        <div className="skill_template_learned_from">
-          <h4>Favourite learning resources</h4>
-          <ul className="skill_template_learned_list">
-            <li className="skill_template_learned_list_item">- a</li>
-            <li className="skill_template_learned_list_item">- b</li>
-            <li className="skill_template_learned_list_item">- c</li>
-            <li className="skill_template_learned_list_item">- e</li>
-            <li className="skill_template_learned_list_item">- g</li>
-          </ul>
-        </div>
-      </div>
-      <div className="skill_template_summary_wrapper">
-        <p className="skill_template_summary">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos
-          nulla, pariatur molestiae omnis nostrum assumenda et, adipisci
-          deserunt aperiam maiores eligendi voluptates autem? Fuga eos, earum
-          numquam voluptate non animi?
-        </p>
-      </div>
+    <SubHead>{contentfulSkill.title}</SubHead>
+    <div className="skill_template_summary_wrapper">
+      {documentToReactComponents(contentfulSkill.summary.json, {
+        renderNode: {
+          [BLOCKS.PARAGRAPH]: (_, children) => (
+            <p className="skill_template_summary">{children}</p>
+          ),
+          [INLINES.HYPERLINK]: (_, children): React.ReactNode => (
+            <a className="skill_template_link">{children}</a>
+          ),
+        },
+      })}
     </div>
-
-    <h3 className="skill_template_projects_header">Code Samples</h3>
-    {[1, 2, 3, 4].map((_, index) => (
-      <div className="skills_template_project_wrapper" key={index}>
-        <div className="skills_template_list_item">
-          <img className="skills_template_project_img" src={card} />
-          <div className="skills_template_project_detail_wrapper">
-            <h4 className="skills_template_project_title">Title</h4>
-            <p className="skills_template_project_desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laboriosam eaque assumenda, dolor adipisci inventore vel placeat
-              ipsa, quam illo vitae architecto!
-            </p>
-            <Link
-              className="skills_template_project_link"
-              to="/projects/project"
-            >
-              details
-            </Link>
-            <a
-              className="skills_template_project_link"
-              href="http://github.com"
-            >
-              website
-            </a>
-            <a
-              className="skills_template_project_link"
-              href="http://github.com"
-            >
-              github
-            </a>
-          </div>
-        </div>
+    {next && next.slug && (
+      <div className="skill_tempate_next_wrapper">
+        <Link
+          className="skill_template_next_link even"
+          to={`/skills/${next.slug}`}
+        >
+          <span className="skill_template_next_link_text">Next</span>
+          <span className="skill_template_next_link_project_title">
+            {next.title}
+          </span>
+        </Link>
       </div>
-    ))}
-    <div className="skills_tempate_next_wrapper">
-      <Link className="skills_template_next_link even" to="/projects">
-        <span className="skills_template_next_link_text">Next</span>
-        <span className="skills_template_next_link_project_title">
-          Project Title
-        </span>
-      </Link>
-    </div>
+    )}
   </div>
 )
 
 export default Skill
+
+export const query = graphql`
+  query($id: String!) {
+    contentfulSkill(id: { eq: $id }) {
+      title
+      summary {
+        json
+      }
+    }
+  }
+`
