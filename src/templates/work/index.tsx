@@ -69,6 +69,7 @@ const Work = ({
           <ul className="work_template_skills_list">
             {contentfulProject.skills.map((skill: string) => (
               <Link
+                key={skill}
                 to={`/skills/${skill.toLowerCase()}`}
                 className="work_template_skills_list_item"
               >
@@ -82,7 +83,7 @@ const Work = ({
       {contentfulProject.list && (
         <div className="work_template_repeat_section">
           {contentfulProject.list.map((item, index) => (
-            <div key={index} className="work_template_repeating_entry">
+            <div key={item.title} className="work_template_repeating_entry">
               {documentToReactComponents(item.description.json, {
                 renderNode: {
                   [BLOCKS.PARAGRAPH]: (_, children): React.ReactNode => (
@@ -116,9 +117,9 @@ const Work = ({
               </div>
               {item.mobileimages && (
                 <div className="work_template_repeating_images">
-                  {item.mobileimages.map((image, index) => (
+                  {item.mobileimages.map(image => (
                     <div
-                      key={index}
+                      key={image.title}
                       className="work_template_repeating_mobile_image_wrapper"
                     >
                       <Img
@@ -176,6 +177,7 @@ export const query = graphql`
           json
         }
         mobileimages {
+          title
           fluid {
             ...GatsbyContentfulFluid
           }

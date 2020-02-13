@@ -1,165 +1,82 @@
 @import "../../scss/variables/colors.scss";
 
-.skills_template_summary_wrapper {
-  margin: 0 auto;
-  margin-bottom: 6rem;
-  max-width: 50rem;
-  padding: 0 4rem;
-}
-
-.skill_template_lists_wrapper {
+.skill_template_summary_wrapper {
+  min-height: calc(100vh - 10rem - 25vh);
   display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  margin-bottom: 5rem;
-  flex-wrap: wrap;
-}
-
-.skill_template_xp_wrapper {
-  padding-right: 8rem;
-  padding-bottom: 4rem;
-}
-
-.skill_template_learned_list_item {
-  list-style: none;
+  // align-items: center;
 }
 
 .skill_template_summary {
-  max-width: 60rem;
+  padding: 0 4rem;
   margin: 0 auto;
+  font-size: 2rem;
 }
 
-.skill_template_projects_header {
-  margin: 6rem auto;
-  text-align: center;
+.skill_template_link {
+  font-size: 2rem;
 }
 
-.skills_template_project_wrapper {
-  .skills_template_list_item {
-    padding: 15rem 2rem;
-    display: flex;
-    min-height: 110vh;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 120rem;
-    flex-wrap: wrap-reverse;
-
-    .skills_template_project_img {
-      width: 80%;
-      max-width: 100%;
-    }
-
-    .skills_template_project_detail_wrapper {
-      padding: 0 4rem;
-      display: flex;
-      flex-direction: column;
-      max-width: 48rem;
-    }
-
-    .skills_template_project_title {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .skills_template_project_desc {
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .skills_template_project_link {
-      font-size: 2rem;
-      color: $color-dark-accent;
-      align-self: center;
-      display: inline-block;
-
-      &:hover {
-        color: blue;
-      }
-    }
-  }
-
-  &:nth-child(even) {
-    background: $color-dark-main;
-
-    .skills_template_list_item {
-      flex-direction: row-reverse;
-    }
-
-    .skills_template_project_desc,
-    .skills_template_project_title,
-    .skills_template_project_link {
-      color: $color-light-accent;
-    }
-  }
-}
-
-.skills_template_next_link {
+.skill_template_next_link {
   display: flex;
   flex-direction: column;
-  padding: 3rem;
+  padding: 5rem 3rem;
   margin-top: 5rem;
+  background: $color-light-main;
 
-  .skills_template_next_link_text {
+  .skill_template_next_link_text {
     font-size: 2rem;
-    color: $color-dark-accent;
+    color: $color-blue-main;
   }
 
-  .skills_template_next_link_project_title {
-    font-size: 12rem;
-    color: $color-dark-accent;
-  }
-
-  &.even {
-    background: $color-dark-main;
-
-    .skills_template_next_link,
-    .skills_template_next_link_text,
-    .skills_template_next_link_project_title {
-      color: $color-light-accent;
-    }
+  .skill_template_next_link_project_title {
+    color: $color-blue-main;
   }
 }
 
-@media only screen and (min-width: 42.75em) {
-  .skills_template_project_wrapper {
-    .skills_template_list_item {
-      .skills_template_project_img {
-        width: 40rem;
-      }
-      .skills_template_project_detail_wrapper {
-        max-width: 40rem;
-      }
-      .skills_template_project_desc,
-      .skills_template_project_title {
-        text-align: left;
-      }
-      .skills_template_project_link {
-        align-self: flex-start;
-      }
-    }
+@media only screen and (min-width: 37.5em) {
+  .skill_template_next_link {
+    padding-top: 6rem;
+  }
+
+  .skill_template_next_link_project_title {
+    font-size: 12rem;
+  }
+}
+
+@media only screen and (min-width: 45em) {
+  .skill_template_summary_wrapper {
+    align-items: center;
+    justify-content: center;
+    padding-top: 6rem;
+  }
+
+  .skill_template_summary {
+    font-size: 4rem;
+    padding: 0rem 8rem;
+    max-width: 1600px;
+    padding-bottom: 5rem;
+  }
+
+  .skill_template_link {
+    font-size: 4rem;
+  }
+  .skill_template_next_link_project_title {
+    font-size: 10rem;
+  }
+}
+
+@media only screen and (min-width: 50em) {
+  .skill_template_next_link {
+    padding: 8rem 10rem;
+  }
+
+  .skill_template_next_link_project_title {
+    font-size: 16rem;
   }
 }
 
 @media only screen and (min-width: 53.75em) {
-  .skills_template_summary_wrapper {
-    max-width: 50rem;
-    margin-left: calc(33% + 1.5rem);
-    padding: 0;
-  }
-
-  .skills_template_next_link {
-    padding: 4rem 12rem;
-  }
-}
-
-@media only screen and (min-width: 56.25em) {
-  .skills_template_project_wrapper {
-    .skills_template_list_item {
-      .skills_template_project_img {
-        width: 50rem;
-      }
-    }
+  .skill_template_summary_wrapper {
+    min-height: calc(100vh - 8rem - 30vh);
   }
 }

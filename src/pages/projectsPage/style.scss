@@ -74,12 +74,11 @@ $base-parallax-perspective: 10px;
 
 .section_projects_img {
   width: 100vw;
-  height: 50vw;
 }
 
 .section_projects_title {
   //  padding: 2rem 10% 12rem 10%;
-  font-size: 4rem;
+  font-size: 5rem;
   position: relative;
   text-align: center;
   position: relative;
@@ -108,51 +107,39 @@ $base-parallax-perspective: 10px;
 }
 
 .section_projects_project {
-  pointer-events: none;
   position: relative;
 }
 
 @media only screen and (min-width: 37.5em) {
+  .section_projects_list {
+    margin-bottom: 10rem;
+  }
+
   .section_projects_project {
     display: flex;
     align-items: center;
 
-    &:nth-of-type(2) {
-      transform: translateY(-25%);
-    }
-    &:nth-of-type(3) {
-      transform: translateY(-50%);
-    }
-    &:nth-of-type(4) {
-      transform: translateY(-75%);
-    }
-    &:nth-of-type(5) {
-      transform: translateY(-100%);
-    }
-    &:nth-of-type(6) {
-      transform: translateY(-125%);
-    }
-    &:nth-of-type(7) {
-      transform: translateY(-150%);
+    &:not(:last-child) {
+      margin-bottom: 2rem;
     }
 
     .section_projects_title {
-      font-size: 4rem;
+      font-size: 6rem;
       font-weight: 500;
-      text-align: right;
       position: absolute;
+      min-width: 15vw;
 
       top: 50%;
-      transform: translateX(20%) translateY(-50%);
+      transform: translateY(-50%);
 
-      right: 50%;
-      left: auto;
+      right: auto;
+      left: 37vw;
       max-width: 30vw;
       z-index: 2;
 
       &:after {
-        left: auto;
-        right: 10%;
+        left: 11vw;
+
         z-index: -1;
         width: 5vw;
         height: 120%;
@@ -162,7 +149,7 @@ $base-parallax-perspective: 10px;
       }
 
       &:hover {
-        transform: translateX(20%) translateY(-54%);
+        transform: translateY(-54%);
       }
     }
 
@@ -170,22 +157,22 @@ $base-parallax-perspective: 10px;
       flex-direction: row-reverse;
 
       .section_projects_title {
-        text-align: left;
+        text-align: right;
         position: absolute;
-        right: auto;
-        left: 50%;
+        right: 37vw;
+        left: auto;
 
-        transform: translateX(-20%) translateY(-50%);
+        transform: translateY(-50%);
 
         &:after {
           z-index: -1;
-          left: 10%;
-          right: auto;
+          right: 11vw;
+          left: auto;
           width: 5vw;
           background: $color-light-main;
         }
         &:hover {
-          transform: translateX(-20%) translateY(-54%);
+          transform: translateY(-54%);
         }
       }
     }
@@ -221,7 +208,6 @@ $base-parallax-perspective: 10px;
 
   .section_projects_wrapper {
     width: 40vw;
-    height: 40vw;
 
     &:hover {
       .section_projects_img {
@@ -246,31 +232,7 @@ $base-parallax-perspective: 10px;
 @media only screen and (min-width: 62.5em) {
   .section_projects_project {
     .section_projects_title {
-      font-size: 7rem;
-
-      transform: translateX(40%) translateY(-50%);
-      max-width: 40vw;
-
-      &:after {
-        right: 30%;
-      }
-
-      &:hover {
-        transform: translateX(40%) translateY(-54%);
-      }
-    }
-
-    &:nth-child(odd) {
-      .section_projects_title {
-        transform: translateX(-40%) translateY(-50%);
-
-        &:after {
-          left: 30%;
-        }
-        &:hover {
-          transform: translateX(-40%) translateY(-54%);
-        }
-      }
+      font-size: 8rem;
     }
   }
 }
