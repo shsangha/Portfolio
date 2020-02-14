@@ -54,12 +54,17 @@ $base-parallax-perspective: 10px;
   align-items: center;
   min-height: 110vh;
   padding: 0 5rem;
-
-  .about_page_row_text {
-    color: $color-dark-main;
+  background: $color-dark-main;
+  .about_page_row_text,
+  .about_page_row_header {
+    color: $color-light-main;
   }
 
   .about_page_row_content {
+    margin-left: auto;
+  }
+
+  .about_page_row_header {
     margin-left: auto;
   }
 
@@ -68,7 +73,7 @@ $base-parallax-perspective: 10px;
   }
 
   &:nth-of-type(odd) {
-    background: $color-dark-main;
+    background: $color-light-main;
 
     .about_page_row_content {
       //max-width: 40%;
@@ -77,7 +82,7 @@ $base-parallax-perspective: 10px;
 
     .about_page_row_header,
     .about_page_row_text {
-      color: $color-light-main;
+      color: $color-dark-main;
     }
   }
 
@@ -101,7 +106,7 @@ $base-parallax-perspective: 10px;
   position: absolute;
   bottom: -20rem;
   left: 0;
-  height: 50rem;
+  width: 30rem;
 }
 
 @media only screen and (min-width: 43.75em) {

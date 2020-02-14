@@ -17,7 +17,7 @@ export default () => {
             </div>
             <div className="footer_contact_field">
               <h4 className="footer_contact_label">Email</h4>
-              <a className="footer_contact_link">shawnsangha9@gmail.com</a>
+              <a className="footer_contact_link">shawn@ssangha.io</a>
             </div>
             <div className="footer_contact_field">
               <h4 className="footer_contact_label">Github</h4>

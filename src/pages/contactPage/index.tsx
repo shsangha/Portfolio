@@ -90,10 +90,8 @@ export default ({
           <footer className="section_contact_footer">
             <div className="section_contact_footer_content">
               <p className="section_contact_footer_text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-                non numquam a amet, omnis sint culpa dolorum architecto commodi
-                eaque officiis tempora minus? Eveniet ipsam veritatis soluta
-                sunt obcaecati ducimus.
+                I am currently searching for my next opportunity. So if you have
+                interest in working together please get in touch!
               </p>
             </div>
           </footer>

@@ -24,10 +24,10 @@ const BelowFold = (props: {
             }
           }
 
-          aboutImage: file(relativePath: { eq: "placeholder.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 600) {
-                ...GatsbyImageSharpFluid
+          contentfulAbout {
+            indexplaceholder {
+              fluid {
+                ...GatsbyContentfulFluid
               }
             }
           }
@@ -44,17 +44,16 @@ const BelowFold = (props: {
                   className="section_about_img slide_img "
                   {...props.contrastCursor()}
                 >
-                  <Img fluid={data.aboutImage.childImageSharp.fluid} />
+                  <Img fluid={data.contentfulAbout.indexplaceholder.fluid} />
                 </div>
 
                 <div className="section_about_desc fadein_text">
                   <h2 className="section_about_header">About</h2>
 
                   <p className="section_about_text">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Beatae, asperiores quod quasi corporis quam a? Cumque quis
-                    autem unde commodi doloribus aliquid modi eos. Beatae,
-                    facere odio. Fugiat, quo mollitia!
+                    I am a fontend developer in Calgary that really enjoys
+                    working with both designers and other developers, and am
+                    currently available for full time hire.
                   </p>
                   <Link
                     to="/about"
