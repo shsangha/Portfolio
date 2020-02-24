@@ -26,14 +26,6 @@ module.exports = {
         name: "uploads",
       },
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/content`,
-        name: "cmsContent",
-      },
-    },
-
     `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-transformer-sharp",
