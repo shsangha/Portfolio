@@ -2,7 +2,7 @@ import React, { useEffect, Dispatch, SetStateAction } from "react"
 import { TimelineLite } from "gsap"
 import "./styles/index.scss"
 import { graphql, StaticQuery } from "gatsby"
-import { FluidImage } from "../../../types/index"
+import { FluidImage } from "../../types/index"
 import Img from "gatsby-image"
 import loadable from "react-loadable"
 

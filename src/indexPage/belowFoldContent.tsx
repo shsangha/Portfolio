@@ -2,10 +2,10 @@ import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import "./styles/belowFold.scss"
 import Img from "gatsby-image"
-import { FluidImage } from "../../../types/index"
-import IntersectionObserverHOC from "../../components/IntersectionObserverTriggerHOC"
+import { FluidImage } from "../../types/index"
+import IntersectionObserverHOC from "../components/IntersectionObserverTriggerHOC"
 import Projects from "../projectsPage/projects"
-import Footer from "../../components/footer"
+import Footer from "../components/footer"
 
 const BelowFold = (props: {
   location: Location

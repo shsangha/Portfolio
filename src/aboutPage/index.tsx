@@ -1,6 +1,6 @@
 import React, { useEffect, Dispatch, SetStateAction } from "react"
-import SubHead from "../../components/subHead"
-import Footer from "../../components/footer"
+import SubHead from "../components/subHead"
+import Footer from "../components/footer"
 import "./index.scss"
 import Img from "gatsby-image"
 import { StaticQuery, graphql } from "gatsby"

@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Portfolio site for Shawn Sangha ",
   "main": "gatsby-config.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\""
-  },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^14.0.1",

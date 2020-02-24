@@ -1,10 +1,10 @@
 import React, { useEffect, Dispatch, SetStateAction } from "react"
 import "./style.scss"
 import { Link } from "gatsby"
-import Footer from "../../components/footer"
-import SubHeader from "../../components/subHead"
+import Footer from "../components/footer"
+import SubHeader from "../components/subHead"
 
-import imageSrc from "../../../static/img/skillsPage.jpg"
+import imageSrc from "../../static/img/skillsPage.jpg"
 
 const marqeeText = [
   "A11Y",

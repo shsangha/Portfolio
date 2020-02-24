@@ -1,4 +1,4 @@
-@import "../../scss/variables/colors.scss";
+@import "../scss/variables/colors.scss";
 $base-parallax-perspective: 10px;
 
 @function parallax-scale-factor($z-distance) {

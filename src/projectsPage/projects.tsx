@@ -1,6 +1,6 @@
 import React, { useEffect, Dispatch, SetStateAction } from "react"
 import Img from "gatsby-image"
-import SubHead from "../../components/subHead"
+import SubHead from "../components/subHead"
 import { StaticQuery, graphql, Link } from "gatsby"
 import "./style.scss"
 

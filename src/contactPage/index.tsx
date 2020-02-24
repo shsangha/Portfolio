@@ -1,7 +1,7 @@
 import React, { useEffect, Dispatch, SetStateAction } from "react"
 import Img from "gatsby-image"
 import { StaticQuery, graphql } from "gatsby"
-import SubHead from "../../components/subHead"
+import SubHead from "../components/subHead"
 import "./style.scss"
 
 export default ({
