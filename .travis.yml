@@ -14,7 +14,6 @@ deploy:
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: $S3_BUCKET
   skip_cleanup: false
-  acl: public_read
   local-dir: public
   on:
     branch: master
