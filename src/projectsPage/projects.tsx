@@ -4,6 +4,7 @@ import SubHead from "../components/subHead"
 import { StaticQuery, graphql, Link } from "gatsby"
 import "./style.scss"
 
+// eslint-disable-next-line react/display-name
 export default ({
   setMenuType,
   focusLink,
@@ -21,7 +22,7 @@ export default ({
         query {
           allContentfulProject(
             sort: { order: ASC, fields: priority }
-            limit: 3
+            limit: 4
           ) {
             nodes {
               title

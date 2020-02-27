@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { useEffect, Dispatch, SetStateAction } from "react"
 import { TimelineLite } from "gsap"
 import "./styles/index.scss"
@@ -23,14 +24,14 @@ export default (props: {
 
     myTimeline.staggerFromTo(
       ".intro_header_span",
-      1,
+      0.4,
       {
         opacity: 0,
-        y: "2rem",
+        y: "4rem",
       },
       { opacity: 1, y: 0 },
-      0.1,
-      "+=.5"
+      0.2,
+      "+=0.3"
     )
   }, [])
 
@@ -104,13 +105,12 @@ export default (props: {
                 <span className="intro_header_span">curious </span>{" "}
                 <span className="intro_header_span">and </span>{" "}
                 <span className="intro_header_span">versitle </span>{" "}
-                <span className="intro_header_span">front-end </span>{" "}
                 <span className="intro_header_span">developer </span>{" "}
                 <span className="intro_header_span">with </span>{" "}
                 <span className="intro_header_span">a </span>{" "}
                 <span className="intro_header_span">love </span>{" "}
                 <span className="intro_header_span">for </span>{" "}
-                <span className="intro_header_span"> web-performacnce </span>{" "}
+                <span className="intro_header_span"> performacnce </span>{" "}
                 <span className="intro_header_span">and </span>{" "}
                 <span className="intro_header_span">design.</span>{" "}
               </h1>

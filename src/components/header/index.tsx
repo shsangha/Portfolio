@@ -26,12 +26,14 @@ interface Props {
   }
 }
 
+// eslint-disable-next-line react/display-name
 export default ({
   location,
   menuStatus,
   setMenuStatus,
   focusLink,
   children,
+  imageData,
 }: Props): React.ReactElement => {
   const path = location.pathname
     .split("/")
@@ -155,6 +157,7 @@ export default ({
           location={location}
           setMenuStatus={setMenuStatus}
           menuType={menuType}
+          imageData={imageData}
         />
       )}
     </>

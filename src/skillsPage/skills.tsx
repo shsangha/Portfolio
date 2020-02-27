@@ -1,6 +1,6 @@
 import React, { useEffect, Dispatch, SetStateAction } from "react"
 import "./style.scss"
-import { Link } from "gatsby"
+import { Link, graphql, StaticQuery } from "gatsby"
 import Footer from "../components/footer"
 import SubHeader from "../components/subHead"
 
@@ -39,12 +39,10 @@ export default ({
   useEffect(() => {
     //need to implement the strategy where color changes on entry exit with data-color
 
-    if (menuStatus.menuOpen) {
+    if (!menuStatus.menuOpen) {
       const observer = new IntersectionObserver(
         entry => {
           if (!entry[0].isIntersecting) {
-            console.log(menuStatus)
-
             setMenuType("dark")
           } else if (entry[0].isIntersecting) {
             setMenuType("light")
@@ -64,30 +62,52 @@ export default ({
   }, [menuStatus.menuOpen])
 
   return (
-    <>
-      <div className="skills_page ">
-        <div className="skills_page_hero skills_page_watch_exit">
-          <SubHeader mode="dark">Skills &#38; experience </SubHeader>
-        </div>
-        <img className="skills_img" src={imageSrc} />
-
-        <div className="skills_wrapper">
-          <div className="skills_list_wrapper">
-            <div className="skills_list">
-              {marqeeText.map(item => (
-                <div key={item} className="perspective_wrapper">
-                  <div className="skill_item">
-                    <Link className="skill_item_link" to="/">
-                      {item}
-                    </Link>
-                  </div>
-                </div>
-              ))}
+    <StaticQuery
+      query={graphql`
+        {
+          allContentfulSkill(sort: { fields: title, order: ASC }) {
+            edges {
+              node {
+                title
+                slug
+              }
+            }
+          }
+        }
+      `}
+    >
+      {({ allContentfulSkill: { edges } }) => {
+        return (
+          <div className="skills_page ">
+            <div className="skills_page_hero skills_page_watch_exit">
+              <SubHeader mode="dark">Skills &#38; experience </SubHeader>
             </div>
+            <img className="skills_img" src={imageSrc} />
+
+            <div className="skills_wrapper">
+              <div className="skills_list_wrapper">
+                <div className="skills_list">
+                  {edges.map(({ node: { title, slug } }) => {
+                    return (
+                      <div key={slug} className="perspective_wrapper">
+                        <div className="skill_item">
+                          <Link
+                            className="skill_item_link"
+                            to={`/skills/${slug}`}
+                          >
+                            {title}
+                          </Link>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+            <Footer />
           </div>
-        </div>
-        <Footer />
-      </div>
-    </>
+        )
+      }}
+    </StaticQuery>
   )
 }

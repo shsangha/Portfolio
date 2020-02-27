@@ -15,7 +15,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 exports.createPages = ({ actions: { createPage }, graphql, reporter }) => {
   return graphql(`
     query Pages {
-      skills: allContentfulSkill {
+      skills: allContentfulSkill(sort: { fields: title, order: ASC }) {
         edges {
           next {
             slug

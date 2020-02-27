@@ -1,23 +1,9 @@
 import React, { Component, Dispatch, SetStateAction } from "react"
 import gsap from "gsap"
 import { Link } from "gatsby"
-
+import Img from "gatsby-image"
 import { MenuState } from "../../../../types/index"
 import "./menu.scss"
-
-import about1 from "../../../../static/img/menuAbout1.jpg"
-import about2 from "../../../../static/img/menuAbout2.jpg"
-import about3 from "../../../../static/img/menuAbout3.jpg"
-
-import skills1 from "../../../../static/img/menuSkills1.jpg"
-import skills2 from "../../../../static/img/menuSkills2.jpg"
-import skills3 from "../../../../static/img/menuSkills3.jpg"
-
-import work from "../../../../static/img/project1lg.jpg"
-
-import contact1 from "../../../../static/img/menuContact1.jpg"
-import contact2 from "../../../../static/img/menuContact2.jpg"
-import contact3 from "../../../../static/img/menuContact3.jpg"
 
 interface StatefulLocation extends Location {
   state: {
@@ -43,6 +29,8 @@ export default class Menu extends Component<Props> {
   navigationChangeTL: GSAPTimeline | null = null
 
   public componentDidMount(): void {
+    console.log(this.props)
+
     const { setMenuStatus } = this.props
 
     this.menuToggleTL = gsap
@@ -50,7 +38,7 @@ export default class Menu extends Component<Props> {
         onReverseComplete: () => {
           setMenuStatus({
             //     menuOpen: false,
-            //      menuVisible: false,
+            //       menuVisible: false,
           })
         },
       })
@@ -82,13 +70,9 @@ export default class Menu extends Component<Props> {
       menuToggleTL && menuToggleTL.reverse()
     }
 
-    if (
-      location.pathname !== prevProps.location.pathname &&
-      location.state &&
-      location.state.target
-    ) {
+    if (location.pathname !== prevProps.location.pathname && location.state) {
       if (navigationChangeTL && navigationChangeTL.progress() < 1) {
-        navigationChangeTL.progress(100) // play around with this
+        navigationChangeTL.progress(100)
         navigationChangeTL.clear()
       }
 
@@ -132,7 +116,8 @@ export default class Menu extends Component<Props> {
   }
   public render(): JSX.Element {
     const { hovered, transitioning } = this.state
-    const { menuType } = this.props
+    const { menuType, imageData } = this.props
+
     const { setHovered } = this
 
     return (
@@ -212,52 +197,88 @@ export default class Menu extends Component<Props> {
             {(hovered === "about" || transitioning === "about") && (
               <>
                 <div className="menu_img_about one menu_img">
-                  <img className="imginner" src={about1} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.about1.childImageSharp.fluid}
+                  />
                 </div>
                 <div className="menu_img_about two menu_img">
-                  <img className="imginner" src={about2} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.about2.childImageSharp.fluid}
+                  />
                 </div>
                 <div className="menu_img_about three menu_img">
-                  <img className="imginner" src={about3} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.about3.childImageSharp.fluid}
+                  />
                 </div>
               </>
             )}
             {(hovered === "skills" || transitioning === "skills") && (
               <>
                 <div className="menu_img_skills one menu_img ">
-                  <img className="imginner" src={skills1} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.skills1.childImageSharp.fluid}
+                  />{" "}
                 </div>
                 <div className="menu_img_skills two menu_img">
-                  <img className="imginner" src={skills2} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.skills2.childImageSharp.fluid}
+                  />{" "}
                 </div>
                 <div className="menu_img_skills three menu_img">
-                  <img className="imginner" src={skills3} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.skills3.childImageSharp.fluid}
+                  />
                 </div>
               </>
             )}
             {(hovered === "work" || transitioning === "work") && (
               <>
                 <div className="menu_img_work one menu_img">
-                  <img className="imginner" src={work} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.project1.heroimage.fluid}
+                  />{" "}
                 </div>
                 <div className="menu_img_work two menu_img">
-                  <img className="imginner" src={work} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.project2.heroimage.fluid}
+                  />{" "}
                 </div>
                 <div className="menu_img_work three menu_img">
-                  <img className="imginner" src={work} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.project3.heroimage.fluid}
+                  />{" "}
                 </div>
               </>
             )}
             {(hovered === "contact" || hovered === "contact") && (
               <>
                 <div className="menu_img_contact one menu_img">
-                  <img className="imginner" src={contact1} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.contact1.childImageSharp.fluid}
+                  />
                 </div>
                 <div className="menu_img_contact two menu_img">
-                  <img className="imginner" src={contact2} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.contact2.childImageSharp.fluid}
+                  />
                 </div>
                 <div className="menu_img_contact three menu_img">
-                  <img className="imginner" src={contact3} />
+                  <Img
+                    className="imginner"
+                    fluid={imageData.contact3.childImageSharp.fluid}
+                  />
                 </div>
               </>
             )}

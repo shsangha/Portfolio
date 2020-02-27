@@ -1,4 +1,4 @@
-import React, { useEffect, Dispatch, SetStateAction } from "react"
+import React from "react"
 import "./style.scss"
 
 export default () => {
@@ -46,21 +46,10 @@ export default () => {
               </g>
             </svg>
             <p className="footer_text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perspiciatis maxime, officiis sit aperiam
+              For inquiries about working together or just to say hello please
+              feel to contact me via email anytime.
             </p>
           </div>
-        </div>
-      </div>
-      <div className="footer_scrolltop">
-        <div className="footer_arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98.32 80.61">
-            <polygon
-              className="footer_arrow_svg"
-              points="98.32 64.87 98.08 79.97 69.86 42.81 48.83 15.11 28.17 43.08 0.44 80.61 0 65.51 20.66 37.53 48.38 0 49.08 0 77.29 37.16 98.32 64.87"
-              fill="#231f20"
-            />
-          </svg>
         </div>
       </div>
     </footer>

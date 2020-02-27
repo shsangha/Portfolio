@@ -16,8 +16,6 @@ $base-parallax-perspective: 10px;
 }
 
 .intro_img_fade {
-  transition: scale 3s;
-
   &:after {
     transform-origin: 0 100%;
 
@@ -30,7 +28,8 @@ $base-parallax-perspective: 10px;
     left: 0;
     right: 0;
     background: $color-light-main;
-    animation: introFade 2s linear 1;
+    animation: introFade 1.5s linear 1;
+    animation-delay: 0.3s;
     animation-fill-mode: forwards;
   }
 }

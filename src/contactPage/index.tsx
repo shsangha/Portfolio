@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from "gatsby"
 import SubHead from "../components/subHead"
 import "./style.scss"
 
+// eslint-disable-next-line react/display-name
 export default ({
   setMenuType,
   focusLink,
@@ -48,8 +49,8 @@ export default ({
 
                 <div className="section_contact_content ">
                   <h3 className="section_contact_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
-                    quisquam nobis debitis cumque fugit
+                    To get in touch about working together or just to say hello
+                    please feel free to reachout by phone or email at any time!
                   </h3>
                   <div className="section_contact_links ">
                     <div className="section_contact_field">
@@ -59,7 +60,7 @@ export default ({
                         className="section_contact_value"
                         {...focusLink()}
                       >
-                        shawnsangha9@gmail.com
+                        shawn@ssangha.io
                       </a>
                     </div>
                     <div className="section_contact_field">

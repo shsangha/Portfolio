@@ -20,6 +20,7 @@ const BelowFold = (props: {
             edges {
               node {
                 title
+                slug
               }
             }
           }
@@ -34,8 +35,6 @@ const BelowFold = (props: {
         }
       `}
       render={(data: { [key: string]: FluidImage }): React.ReactNode => {
-        console.log(data)
-
         return (
           <>
             <section className="section_about">
@@ -51,9 +50,9 @@ const BelowFold = (props: {
                   <h2 className="section_about_header">About</h2>
 
                   <p className="section_about_text">
-                    I am a fontend developer in Calgary that really enjoys
-                    working with both designers and other developers, and am
-                    currently available for full time hire.
+                    Hi! I&apos;m Shawn, an enthusiastic, hardworking, and
+                    versatile developer currently available for full time hire,
+                    and ready to take on a new challenge.
                   </p>
                   <Link
                     to="/about"
@@ -73,19 +72,27 @@ const BelowFold = (props: {
                 <div className="marquee_wrapper observe ">
                   <div className="marquee backward fadeMarquee">
                     {data.allContentfulSkill.edges.map(
-                      ({ node: { title } }) => (
-                        <div key={title} className="marquee_item">
+                      ({ node: { title, slug } }) => (
+                        <Link
+                          to={`/skills/${slug}`}
+                          key={title}
+                          className="marquee_item"
+                        >
                           {title}
-                        </div>
+                        </Link>
                       )
                     )}
                   </div>
                   <div className="marquee backward fadeMarquee">
                     {data.allContentfulSkill.edges.map(
-                      ({ node: { title } }) => (
-                        <div key={title} className="marquee_item">
+                      ({ node: { title, slug } }) => (
+                        <Link
+                          to={`/skills/${slug}`}
+                          key={title}
+                          className="marquee_item"
+                        >
                           {title}
-                        </div>
+                        </Link>
                       )
                     )}
                   </div>
@@ -103,19 +110,27 @@ const BelowFold = (props: {
                 <div className="marquee_wrapper observe ">
                   <div className="marquee forward  fadeMarquee">
                     {data.allContentfulSkill.edges.map(
-                      ({ node: { title } }) => (
-                        <div key={title} className="marquee_item">
+                      ({ node: { title, slug } }) => (
+                        <Link
+                          to={`/skills/${slug}`}
+                          key={title}
+                          className="marquee_item"
+                        >
                           {title}
-                        </div>
+                        </Link>
                       )
                     )}
                   </div>
                   <div className="marquee forward fadeMarquee">
                     {data.allContentfulSkill.edges.map(
-                      ({ node: { title } }) => (
-                        <div key={title} className="marquee_item">
+                      ({ node: { title, slug } }) => (
+                        <Link
+                          to={`/skills/${slug}`}
+                          key={title}
+                          className="marquee_item"
+                        >
                           {title}
-                        </div>
+                        </Link>
                       )
                     )}
                   </div>
