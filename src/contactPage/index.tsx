@@ -1,21 +1,12 @@
-import React, { useEffect, Dispatch, SetStateAction } from "react"
+import React from "react"
 import Img from "gatsby-image"
 import { StaticQuery, graphql } from "gatsby"
 import SubHead from "../components/subHead"
+import { CursorContextInterface } from "../types"
 import "./style.scss"
 
 // eslint-disable-next-line react/display-name
-export default ({
-  setMenuType,
-  focusLink,
-  menuStatus,
-}: {
-  setMenuType: Dispatch<SetStateAction<string>>
-  focusLink: () => {
-    onMouseEnter: () => void
-    onMouseLeave: () => void
-  }
-}): React.ReactNode => {
+export default ({ focusLink }: CursorContextInterface): React.ReactNode => {
   return (
     <StaticQuery
       query={graphql`
@@ -29,7 +20,7 @@ export default ({
           }
         }
       `}
-      render={data => (
+      render={(data): React.ReactNode => (
         <div className="contact_page">
           <SubHead>Contact</SubHead>
 

@@ -6,22 +6,17 @@ import {
 } from "react-transition-group"
 import gsap from "gsap"
 import Header from "../components/header"
-import { ReachRouterLocation, MenuState } from "../../types/index"
+import { ReachRouterLocation, MenuState } from "../types/index"
 import Cursor from "../components/cursor"
 import MenuColorHelper from "./menuColorHelper"
+import { CursorContextInterface, ImageDataInterface } from "../types/index"
 import { StaticQuery, graphql } from "gatsby"
-
 import "./layout.scss"
 
 let activeEnterTimeline: GSAPTimeline | null = null
 let activeExitTimeline: GSAPTimeline | null = null
 
-export const CursorContext = createContext({
-  focusLink: () => {},
-  contrastCursor: () => {},
-  setMenuType: (value: string): void => {},
-  menuStatus: {},
-})
+export const CursorContext = createContext({} as CursorContextInterface)
 
 const Layout = ({
   children,
@@ -131,9 +126,9 @@ const Layout = ({
         }
       `}
     >
-      {data => (
+      {(data: ImageDataInterface): React.ReactNode => (
         <Cursor>
-          {({ focusLink, contrastCursor }) => {
+          {({ focusLink, contrastCursor }): React.ReactNode => {
             return (
               <div className="container_wrapper">
                 <Header
@@ -204,7 +199,7 @@ const Layout = ({
                             }}
                             timeout={menuStatus.menuOpen ? 1000 : 1000}
                           >
-                            {status => (
+                            {(status): React.ReactNode => (
                               <>
                                 <MenuColorHelper
                                   status={status}

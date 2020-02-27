@@ -1,30 +1,9 @@
-import React, {
-  useEffect,
-  useRef,
-  Dispatch,
-  SetStateAction,
-  useState,
-} from "react"
+import React, { useEffect, useRef, useState } from "react"
 import "./header.scss"
 import Menu from "./menu"
+import { HeaderProps } from "../../types/index"
 import { Transition, TransitionGroup } from "react-transition-group"
-import { MenuState } from "../../../types/index"
 import { Link } from "gatsby"
-
-interface Props {
-  location: Location
-  menuStatus: MenuState
-  setMenuStatus: Dispatch<SetStateAction<MenuState>>
-  children: ({
-    setMenuType,
-  }: {
-    setMenuType: Dispatch<SetStateAction<string>>
-  }) => React.ReactElement
-  focusLink: () => {
-    onMouseEnter: () => void
-    onMouseLeave: () => void
-  }
-}
 
 // eslint-disable-next-line react/display-name
 export default ({
@@ -34,7 +13,7 @@ export default ({
   focusLink,
   children,
   imageData,
-}: Props): React.ReactElement => {
+}: HeaderProps): React.ReactElement => {
   const path = location.pathname
     .split("/")
     .filter((path, index) => index !== 0 && path !== "")
@@ -106,7 +85,7 @@ export default ({
                         exit: 0,
                       }}
                     >
-                      {status => (
+                      {(status): React.ReactNode => (
                         <div className={`header_breadcrumb ${status}`}>
                           {item}
                         </div>

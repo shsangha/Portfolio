@@ -1,17 +1,13 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import "./styles/belowFold.scss"
-import Img from "gatsby-image"
-import { FluidImage } from "../../types/index"
+import Img, { GatsbyImageProps } from "gatsby-image"
+import { CursorContextInterface } from "../types/index"
 import IntersectionObserverHOC from "../components/IntersectionObserverTriggerHOC"
 import Projects from "../projectsPage/projects"
 import Footer from "../components/footer"
 
-const BelowFold = (props: {
-  location: Location
-  contrastCursor: Function
-  focusLink: Function
-}) => {
+const BelowFold = (props: CursorContextInterface): React.ReactNode => {
   return (
     <StaticQuery
       query={graphql`
@@ -34,7 +30,21 @@ const BelowFold = (props: {
           }
         }
       `}
-      render={(data: { [key: string]: FluidImage }): React.ReactNode => {
+      render={(data: {
+        contentfulAbout: {
+          indexplaceholder: GatsbyImageProps
+        }
+        allContentfulSkill: {
+          edges: [
+            {
+              node: {
+                title: string
+                slug: string
+              }
+            }
+          ]
+        }
+      }): React.ReactNode => {
         return (
           <>
             <section className="section_about">
@@ -65,7 +75,7 @@ const BelowFold = (props: {
               </div>
             </section>
             <h2 className="section_projects_header">Recent Work</h2>
-
+            {/*types issue here is a bug with static query*/}
             <Projects {...props} />
             <section className="section_skills">
               <div className="wrapper">

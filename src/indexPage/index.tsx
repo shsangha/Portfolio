@@ -3,7 +3,7 @@ import React, { useEffect, Dispatch, SetStateAction } from "react"
 import { TimelineLite } from "gsap"
 import "./styles/index.scss"
 import { graphql, StaticQuery } from "gatsby"
-import { FluidImage } from "../../types/index"
+import { FluidImage, CursorContextInterface } from "../types/index"
 import Img from "gatsby-image"
 import loadable from "react-loadable"
 
@@ -12,13 +12,7 @@ const BelowFoldContent = loadable({
   loading: () => null,
 })
 
-export default (props: {
-  location: Location
-  contrastCursor: Function
-  focusLink: Function
-  setMenuType: Dispatch<SetStateAction<string>>
-  menuStatus: any
-}): React.ReactNode => {
+export default (props: CursorContextInterface): React.ReactNode => {
   useEffect(() => {
     const myTimeline = new TimelineLite()
 
@@ -83,7 +77,7 @@ export default (props: {
           }
         }
       `}
-      render={(data: { [key: string]: FluidImage }) => {
+      render={(data: { [key: string]: FluidImage }): React.ReactNode => {
         const [img1Sources, img2Sources, img3Sources] = [1, 2, 3].map(idx => {
           return [
             data[`landing${idx}Mobile`].childImageSharp.fluid,

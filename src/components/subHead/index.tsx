@@ -1,6 +1,5 @@
 import React from "react"
 import "./style.scss"
-import { SubtractiveBlending } from "three"
 
 const SubHead = ({
   children,
@@ -34,7 +33,7 @@ const SubHead = ({
         </g>
       </svg>
       <div className={`subHead_text ${mode === "dark" ? "dark" : ""}`}>
-        {children}
+        <>{children}</>
       </div>
     </div>
   )

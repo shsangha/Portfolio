@@ -1,25 +1,11 @@
-import React, { Component, Dispatch, SetStateAction } from "react"
+import React, { Component } from "react"
 import gsap from "gsap"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
-import { MenuState } from "../../../../types/index"
 import "./menu.scss"
+import { MenuProps } from "../../../types"
 
-interface StatefulLocation extends Location {
-  state: {
-    animation: string
-    target: string
-  }
-}
-
-interface Props {
-  location: StatefulLocation
-  menuStatus: MenuState
-  setMenuStatus: Dispatch<SetStateAction<MenuState>>
-  menuType: string
-}
-
-export default class Menu extends Component<Props> {
+export default class Menu extends Component<MenuProps> {
   state = {
     hovered: "",
     transitioning: "",
@@ -29,19 +15,8 @@ export default class Menu extends Component<Props> {
   navigationChangeTL: GSAPTimeline | null = null
 
   public componentDidMount(): void {
-    console.log(this.props)
-
-    const { setMenuStatus } = this.props
-
     this.menuToggleTL = gsap
-      .timeline({
-        onReverseComplete: () => {
-          setMenuStatus({
-            //     menuOpen: false,
-            //       menuVisible: false,
-          })
-        },
-      })
+      .timeline()
       .to(".menu", 0.8, { y: 0, ease: "power2.in" })
       .to(".menu", 1, { opacity: 1, ease: "power2" }, "-=0.8")
       .fromTo(".menu_btn", 0.5, { rotation: 0 }, { rotation: "45deg" }, "-=0.5")
@@ -57,7 +32,7 @@ export default class Menu extends Component<Props> {
       )
   }
 
-  public componentDidUpdate(prevProps: Props): void {
+  public componentDidUpdate(prevProps: MenuProps): void {
     const {
       menuStatus: { menuVisible },
       setMenuStatus,
@@ -79,9 +54,11 @@ export default class Menu extends Component<Props> {
       this.navigationChangeTL = gsap
         .timeline()
         .add(() => {
-          this.setState({
-            transitioning: location.state.target,
-          })
+          if (location.state && location.state.target) {
+            this.setState({
+              transitioning: location.state.target,
+            })
+          }
         })
         .set([".menu_link_svg", ".menu_btn"], { pointerEvents: "none" })
         .set(".menu_cover", { zIndex: 2 })
@@ -144,7 +121,7 @@ export default class Menu extends Component<Props> {
                   onMouseEnter={() => {
                     setHovered(item)
                   }}
-                  onMouseLeave={() => {
+                  onMouseLeave={(): void => {
                     setHovered("")
                   }}
                   viewBox="0 0 400 120"

@@ -1,21 +1,12 @@
-import React, { useEffect, Dispatch, SetStateAction } from "react"
-import Img from "gatsby-image"
-import SubHead from "../components/subHead"
+import React from "react"
+import Img, { GatsbyImageProps } from "gatsby-image"
+
+import { CursorContextInterface } from "../types"
 import { StaticQuery, graphql, Link } from "gatsby"
 import "./style.scss"
 
 // eslint-disable-next-line react/display-name
-export default ({
-  setMenuType,
-  focusLink,
-  menuStatus,
-}: {
-  setMenuType: Dispatch<SetStateAction<string>>
-  focusLink: () => {
-    onMouseEnter: () => void
-    onMouseLeave: () => void
-  }
-}): React.ReactNode => {
+export default ({ focusLink }: CursorContextInterface): React.ReactNode => {
   return (
     <StaticQuery
       query={graphql`
@@ -36,7 +27,13 @@ export default ({
           }
         }
       `}
-      render={({ allContentfulProject: { nodes } }) => {
+      render={({
+        allContentfulProject: { nodes },
+      }: {
+        allContentfulProject: {
+          nodes: [{ title: string; slug: string; preview: GatsbyImageProps }]
+        }
+      }): React.ReactNode => {
         return (
           <>
             <section className="section_projects">
