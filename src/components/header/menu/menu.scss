@@ -235,6 +235,7 @@
 }
 
 .menu_img {
+  visibility: hidden;
   overflow: visible;
   opacity: 0;
   animation: revealImg 0s linear;
@@ -282,6 +283,10 @@
 }
 
 @media only screen and (min-width: 53.125em) {
+  .menu_img {
+    visibility: visible;
+  }
+
   .imginner {
     display: block;
   }
