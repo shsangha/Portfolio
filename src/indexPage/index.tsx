@@ -104,7 +104,7 @@ export default (props: CursorContextInterface): React.ReactNode => {
                 <span className="intro_header_span">a </span>{" "}
                 <span className="intro_header_span">love </span>{" "}
                 <span className="intro_header_span">for </span>{" "}
-                <span className="intro_header_span"> performacnce </span>{" "}
+                <span className="intro_header_span"> performance </span>{" "}
                 <span className="intro_header_span">and </span>{" "}
                 <span className="intro_header_span">design.</span>{" "}
               </h1>
